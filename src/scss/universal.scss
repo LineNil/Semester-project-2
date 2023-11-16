@@ -1,0 +1,86 @@
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+@import "variables";
+
+.background-img {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/judgehammer.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  width: 100%;
+  height: auto;
+}
+
+.btn-login{
+  background-color: $loginbutton;
+}
+.btn-login:hover{
+  background-color: $loginbutton-hover;
+}
+
+
+.login-signup-text{
+  color: $loginsignuptext;
+}
+.login-signup-text:hover{
+  color: $hover-text;
+}
+
+
+.custom-input{
+  background-color: $inputcolor;
+}
+
+
+.no-account{
+  color: $loginsignuptext;
+  padding-right: 36px;
+  top: -35px;
+  position: relative;
+}
+.no-account:hover{
+  color:$hover-text ;
+}
+
+
+
+
+//logo trigger
+.logo-trigger.first-visit img {
+  animation: spin 2s ease-in-out;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+
+
+@media (max-width: 767px) {
+  .background-img {
+    background-position: 31% center;
+  }
+  .no-account {
+    padding-left: 200px;
+    padding-right: 0px;
+    top: -142px;
+    position: relative;
+    font-size: 10px;
+}
+@media (max-width: 767px) {
+  .align-items-end.text-center {
+    align-items: center !important; /* !important for å overstyre Bootstrap-stiler */
+    text-align: center !important;
+  }
+  .mb-4 {
+    margin-bottom: 4px !important; /* Juster marginen for mindre skjermer */
+  }
+}
+}
