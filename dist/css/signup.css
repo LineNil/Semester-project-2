@@ -9714,73 +9714,6 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-.opening-img,
-.new-image {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  cursor: pointer;
-  transition: opacity 0.5s ease-in-out;
-}
-
-.opening-img {
-  background-image: url("/images/opening-img.png");
-  background-size: cover;
-  background-position: center;
-  animation: dissolveImages 10s ease-in-out forwards;
-  z-index: 2;
-}
-
-.new-image {
-  top: 27%;
-  left: -100vw;
-  width: 30%;
-  height: 30%;
-  background-image: url("/images/logo-white.png");
-  background-size: cover;
-  background-position: left center;
-  z-index: 3;
-  animation: slideInNewImage 1.5s ease-in-out forwards, dissolveImages 3s ease-in-out forwards 3s;
-}
-
-@keyframes dissolveImages {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-@keyframes dissolveOpeningImg {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-@keyframes slideInNewImage {
-  from {
-    left: -100vw;
-  }
-  to {
-    left: 9%;
-  }
-}
-@keyframes dissolveNewImage {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-.error-message {
-  color: white;
-}
-
 .background-img {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/images/judgehammer.jpg");
   background-size: cover;
@@ -9790,8 +9723,8 @@ textarea.form-control-lg {
   height: auto;
 }
 
-.custom-input {
-  background-color: rgba(228, 228, 228, 0.7137254902);
+.error-message {
+  color: white;
 }
 
 .btn-login {
@@ -9802,4 +9735,8 @@ textarea.form-control-lg {
   background-color: rgba(228, 228, 228, 0.8588235294);
 }
 
-/*# sourceMappingURL=login.css.map */
+.custom-input {
+  background-color: rgba(228, 228, 228, 0.7137254902);
+}
+
+/*# sourceMappingURL=signup.css.map */

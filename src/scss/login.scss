@@ -77,7 +77,7 @@
 //login
 
 .error-message{
-  color: $error;
+  color: white;
 }
 
 .background-img {
@@ -89,33 +89,14 @@
   height: auto;
 }
 
-.btn-login{
-  background-color: $loginbutton;
-}
-.btn-login:hover{
-  background-color: $loginbutton-hover;
-}
-
-
-.login-signup-text{
-  color: $loginsignuptext;
-}
-.login-signup-text:hover{
-  color: $hover-text;
-}
-
 
 .custom-input{
   background-color: $inputcolor;
 }
 
-
-.no-account{
-  color: $loginsignuptext;
-  padding-right: 36px;
-  top: -35px;
-  position: relative;
+.btn-login{
+  background-color: $login-signupbutton;
 }
-.no-account:hover{
-  color:$hover-text ;
+.btn-login:hover{
+  background-color: $login-signupbutton-hover;
 }

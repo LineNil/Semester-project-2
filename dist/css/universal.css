@@ -9714,6 +9714,12 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
 .navbar {
   z-index: 1;
   font-family: "Inria Serif", serif;
@@ -9721,6 +9727,25 @@ textarea.form-control-lg {
 
 .login-page {
   font-family: "Inria Serif", serif;
+}
+
+.no-account {
+  color: rgba(255, 255, 255, 0.741);
+  padding-right: 36px;
+  top: -35px;
+  position: relative;
+}
+
+.no-account:hover {
+  color: rgb(255, 255, 255);
+}
+
+.login-signup-text {
+  color: rgba(255, 255, 255, 0.741);
+}
+
+.login-signup-text:hover {
+  color: rgb(255, 255, 255);
 }
 
 footer {

@@ -2,6 +2,13 @@
 
 @import "variables";
 
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+
 .navbar{
   z-index: 1;
   font-family: 'Inria Serif', serif;
@@ -10,6 +17,25 @@
 .login-page{
   font-family: 'Inria Serif', serif;
 }
+
+.no-account{
+  color: $loginsignuptext;
+  padding-right: 36px;
+  top: -35px;
+  position: relative;
+}
+.no-account:hover{
+  color:$hover-text ;
+}
+
+.login-signup-text{
+  color: $loginsignuptext;
+}
+.login-signup-text:hover{
+  color: $hover-text;
+}
+
+
 
 
 //footer

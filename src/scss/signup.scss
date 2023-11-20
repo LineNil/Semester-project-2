@@ -1,0 +1,27 @@
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+@import "variables";
+
+
+.background-img {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/judgehammer.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  width: 100%;
+  height: auto;
+}
+
+.error-message{
+  color: white;
+}
+
+.btn-login{
+  background-color: $login-signupbutton;
+}
+.btn-login:hover{
+  background-color: $login-signupbutton-hover;
+}
+.custom-input{
+  background-color: $inputcolor;
+}
