@@ -6,7 +6,136 @@
       rel="stylesheet"
       href="node_modules/bootstrap/dist/css/bootstrap.min.css"
     />
-    <title>Document</title>
+    <link href="dist/css/universal.css" rel="stylesheet" />
+    <link href="dist/css/login.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inria+Sans&family=Inria+Serif&display=swap" rel="stylesheet">
+    <title>Auction Nest</title>
   </head>
-  <body></body>
+  <body>
+    <div class="opening-container">
+      <div class="opening-img"></div>
+      <div class="new-image"></div>
+    </div>
+    
+    <div id="loginPage" class="background-img login-page">
+      <nav class="navbar navbar-light">
+        <a href="/index.html" class="text-decoration-none logo-trigger"
+        ><img
+          src="images/logo.png"
+          alt="Auction Nest logo"
+          class="img-fluid w-50 h-50 ms-4 logo"
+      /></a>
+      
+        <a href="/listings.html" class="no-account text-decoration-none"
+          >Check out listings without an account!</a
+        >
+      </nav>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-5 mx-auto text-center bg">
+            <h2 class="text-white card-title login text-center mb-4">Log in</h2>
+            <a
+              class="hover login-signup-text text-decoration-none"
+              href="/signup.html"
+            >
+              New to AuctionNest? Sign up for free.</a
+            >
+  
+            <form action="/profile/index.html" id="loginForm">
+              <div class="mb-4 col-md-9 mx-auto text-start">
+                <label for="name" class="text-white mt-4">name</label>
+                <input
+                  type="name"
+                  class="form-control pt-2 pb-2 custom-input"
+                  id="name"
+                  name="name"
+                  required
+                  placeholder="John"
+                />
+              </div>
+              <div class="mb-4 col-md-9 mx-auto text-start">
+                <label for="email" class="text-white form-label">Email</label>
+                <input
+                  type="email"
+                  class="form-control pt-2 pb-2 custom-input"
+                  id="emailLogIn"
+                  name="email"
+                  required
+                  placeholder="example@example.com"
+                />
+                <div class="invalid-feedback">Please enter a valid email.</div>
+              </div>
+              <div class="mb-4 col-md-9 mx-auto text-start">
+                <label for="password" class="text-white form-label"
+                  >Password</label
+                >
+                <input
+                  type="password"
+                  class="form-control pt-2 pb-2 custom-input"
+                  id="passwordLoggIn"
+                  name="password"
+                  minlength="8"
+                  required
+                  placeholder="********"
+                />
+                <div class="invalid-feedback">
+                  Password must be at least 8 characters long.
+                </div>
+              </div>
+              <div
+                class="error-message"
+                id="error-message"
+              ></div>
+              <div class="d-grid mx-auto col-md-5">
+                <button
+                  type="submit"
+                  class="btn btn-login ps-0 pe-0 pt-2 pb-2 mt-5 mb-5"
+                >
+                  Log In
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <footer class="text-white text-center py-4">
+        <div class="container footer-row"></div>
+        <div class="row align-items-end text-center">
+          <div class="col-md-4 mb-4 footer-col">
+            <p>Contact:</p>
+            <address>
+              Fakeroad 51, 1135 Oslo<br />
+              Phone: 00000000<br />
+              Mail: fakemail@noroff.no
+            </address>
+          </div>
+          <div class="col-md-4 mb-4 footer-col">
+            <p>
+              &copy; 2023 AuctionNest. All rights reserved.<br />
+              Brought to life - by Line Nilsen
+            </p>
+          </div>
+          <div class="col-md-4 mb-4 footer-col">
+            <i
+              class="fa-brands fa-facebook fa-2x me-2"
+            ></i>
+            <i
+              class="fa-brands fa-instagram fa-2x me-2"
+            ></i>
+            <i class="fa-brands fa-twitter fa-2x me-2"></i>
+          </div>
+        </div>
+        </div>
+      </footer>
+    </div>
+    <script src="js/front-page.js"></script>
+    </body>
+  
+   
 </html>
