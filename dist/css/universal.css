@@ -9714,58 +9714,33 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-.background-img {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/images/judgehammer.jpg");
-  background-size: cover;
-  background-position: center center;
-  background-attachment: fixed;
-  width: 100%;
-  height: auto;
+.navbar {
+  z-index: 1;
+  font-family: "Inria Serif", serif;
 }
 
-.btn-login {
-  background-color: rgba(228, 228, 228, 0.631372549);
+.login-page {
+  font-family: "Inria Serif", serif;
 }
 
-.btn-login:hover {
-  background-color: rgba(228, 228, 228, 0.8588235294);
+footer {
+  font-family: "Inria Sans", sans-serif;
 }
 
-.login-signup-text {
-  color: rgba(255, 255, 255, 0.741);
+.fa-instagram {
+  background: linear-gradient(45deg, #feda75, #fa7e5e, #d62976, #962fbf, #4f5bd5);
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
-.login-signup-text:hover {
-  color: rgb(255, 255, 255);
+.fa-facebook {
+  color: #1747a1;
 }
 
-.custom-input {
-  background-color: rgba(228, 228, 228, 0.7137254902);
+.fa-twitter {
+  color: #22c2ff;
 }
 
-.no-account {
-  color: rgba(255, 255, 255, 0.741);
-  padding-right: 36px;
-  top: -35px;
-  position: relative;
-}
-
-.no-account:hover {
-  color: rgb(255, 255, 255);
-}
-
-.logo-trigger.first-visit img {
-  animation: spin 2s ease-in-out;
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
 @media (max-width: 767px) {
   .background-img {
     background-position: 31% center;
@@ -9777,14 +9752,16 @@ textarea.form-control-lg {
     position: relative;
     font-size: 10px;
   }
-}
-@media (max-width: 767px) and (max-width: 767px) {
+  .opening-img,
+  .new-image {
+    display: none;
+  }
   .align-items-end.text-center {
-    align-items: center !important; /* !important for å overstyre Bootstrap-stiler */
+    align-items: center !important;
     text-align: center !important;
   }
   .mb-4 {
-    margin-bottom: 4px !important; /* Juster marginen for mindre skjermer */
+    margin-bottom: 4px !important;
   }
 }
 
