@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Karla&family=Ms+Madi&display=swap" rel="stylesheet" />
+  <link href="/dist/css/universal.css" rel="stylesheet" />
+  <link href="/dist/css/profile.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+  <title>Profile</title>
+  <script defer type="module" src="../js/listings.js"></script>
+  <script defer type="module" src="../js/newListing.js"></script>
+  <!--<script defer type="module" src="../js/postListing.js"></script>-->
+</head>
+  <body>
+    <!--<div class="color-overlay"></div>-->
+    <nav class="text-center">
+      <div class="text-end mt-2 me-4">
+        <a href="../index.html" id="logout" class="btn btn-logout">Logout</a>
+      </div>
+      <a href="/index.html" class="text-decoration-none align-items-center">
+        <img
+          src="/images/logo.png"
+          alt="Auction Nest logo"
+          class="logo mx-auto"
+        />
+      </a>
+
+    </nav>
+    <div class="ms-2 me-2 pb-5 body-container">
+      <div class="row">
+        <!-- Venstre kolonne -->
+        <div class="left-col col-md-4 pe-5 ps-4">
+          <div class="profile-image-container">
+            <img
+                src="/images/judgehammer.jpg"
+                alt="profile image"
+                class="profile-img"
+            />
+            <button class="edit-avatar-button">Update</button>
+        </div>
+        
+        <div>
+          <h1 class="profile-name" id="profileName">Loading...</h1>
+          <p class="credits" id="profileCredits">Loading...</p>
+          <h2 class="heading-font mb-4 mt-5">New item:</h2>
+          
+          <form id="listingForm">
+            <div class="form-group mb-3">
+              <label for="listingTitle" class="content-font">Title</label>
+              <input type="text" class="form-control" id="listingTitle" required />
+            </div>
+            <div class="form-group mb-3">
+              <label for="listingDeadline" class="content-font">Deadline</label>
+              <input
+                type="date"
+                class="form-control"
+                id="listingDeadline"
+                required
+              />
+            </div>
+            <div class="form-group mb-3">
+              <label for="listingContent" class="content-font">Description</label>
+              <textarea
+                class="form-control"
+                id="listingContent"
+                rows="7"
+                required
+              ></textarea>
+            </div>
+
+            <div class="form-group mb-3">
+              <label for="listingMedia" class="content-font">Media URL</label>
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="listingMedia"
+                  placeholder="Enter media URL"
+                />
+                <div class="mt-2">
+                  <span class="delete-icon" id="deleteImage"
+                    ><i class="fa-solid fa-x"></i
+                  ></span>
+                </div>
+              </div>
+            </div>
+            <button type="submit" class="btn profile-btn content-font">
+              Post item
+            </button>
+          </form>
+        </div>
+        </div>
+        <!-- Høyre kolonner -->
+        <div class="text-center right-col-mq col-md-7">
+          <h4 class="listings-top-h">Listings</h4>
+          <input
+            type="text"
+            class="mt-5 form-control searchInput form-control-sm"
+            id="searchInput"
+            placeholder="Search"
+          />
+          <div id="auctionContainer"></div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="text-black text-center py-4 mt-5">
+      <div class="container footer-row"></div>
+      <div class="g-0 row align-items-end text-center">
+        <div class="col-md-4 mb-4 footer-col">
+          <address>
+            Fakeroad 51, 1135 Oslo<br />
+            Phone: 00000000<br />
+            Mail: fakemail@noroff.no
+          </address>
+        </div>
+        <div class="col-md-4 mb-4 footer-col">
+          <p>
+            &copy; 2023 AuctionNest. All rights reserved.<br />
+            Brought to life - by Line Nilsen
+          </p>
+        </div>
+        <div class="col-md-4 mb-4 footer-col">
+          <i
+            class="fa-brands fa-facebook fa-2x me-2"
+          ></i>
+          <i
+            class="fa-brands fa-instagram fa-2x me-2"
+          ></i>
+          <i class="fa-brands fa-twitter fa-2x me-2"></i>
+        </div>
+      </div>
+      </div>
+    </footer>
+
+
+  </body>
+</html>
