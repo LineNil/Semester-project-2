@@ -59,7 +59,7 @@ async function createNewListing(listingTitle, listingDeadline, listingContent, l
     }
 
     // Last opp mediefiler hvis de er inkludert
-    const mediaUrls = Array.isArray(listingMedia) ? await uploadMedia(listingMedia, accessToken) : [];
+    const mediaUrls = listingMedia && listingMedia.length > 0 ? await uploadMedia(listingMedia, accessToken) : [];
 
     // Opprett auksjonsdataobjekt
     const listingData = {
@@ -151,7 +151,7 @@ if (mediaUrl) {
   }
 
   // Opprett en ny auksjonsoppføring
-  const newListing = await createNewListing(listingTitle, listingDeadline, listingContent, listingMediaInput, accessToken);
+  const newListing = await createNewListing(listingTitle, listingDeadline, listingContent, listingMediaInput.files, accessToken);
   console.log('New Listing:', newListing); 
 
   if (newListing) {
