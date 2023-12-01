@@ -1,14 +1,5 @@
 const ApiUrl = 'https://api.noroff.dev';
 
-/**
- * Registers a user by sending a POST request to the specified URL with user registration data.
- *
- * @param {string} url - The URL to send the registration request to.
- * @param {Object} data - The user registration data to be sent in the request body.
- * @returns {Promise<Object>} A Promise that resolves to the response JSON data.
- * @throws {Error} If there is an error during the registration process.
- */
-
 async function registerUser(url, data) {
   try {
     const postData = {
@@ -23,19 +14,17 @@ async function registerUser(url, data) {
     const json = await response.json();
 
     if (response.ok) {
+      // Handle successful registration (optional)
       window.location.href = '/profile/index.html';
     } else {
+      // Handle registration error (optional)
+      console.error('Registration failed:', json.message);
     }
     return json;
   } catch (error) {
+    console.error('Error during registration:', error);
   }
 }
-
-/**
- * Registers a user by handling form submission and validation.
- * @param {string} url - The URL to which the registration data will be sent.
- * @param {object} data - The user registration data, including name, email, and password.
- */
 
 document.addEventListener('DOMContentLoaded', function () {
   const registrationForm = document.getElementById('registrationForm');
@@ -58,16 +47,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (!isValidNoroffEmail) {
       emailError.style.display = 'block';
-      return; 
+      return;
     }
     emailError.style.display = 'none';
 
-    await registerUser(`${ApiUrl}/api/v1/social/auth/register`, user);
+
+    await registerUser(`${ApiUrl}/api/v1/auction/auth/register`, user);
   });
 
   function isValidEmail(email) {
-    const noroffEmailRegex = /^(.+)@noroff\.no$/;
+    const noroffEmailRegex = /^(.+)@(stud\.)?noroff\.no$/;
     return noroffEmailRegex.test(email);
   }
-  
 });

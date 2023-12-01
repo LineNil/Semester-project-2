@@ -1,13 +1,14 @@
 const ApiUrl = 'https://api.noroff.dev';
 
 /**
- * Function to access token after logging in
- * @param {string} accessToken 
+ * Function to save user data (access token and profile information) after logging in.
+ * @param {string} accessToken - The user's access token.
+ * @param {Object} profileData - The user's profile information.
  */
 
-function saveUserData(accessToken) {
+function saveUserData(accessToken, profileData) {
   localStorage.setItem('accessToken', accessToken);
-
+  localStorage.setItem('profile', JSON.stringify(profileData));
 }
 
 /**
@@ -18,6 +19,7 @@ function saveUserData(accessToken) {
  * @param {Object} data - User data to be sent as the request payload.
  * @param {string} data.email - The user's email address.
  * @param {string} data.password - The user's password.
+ * @param {string} data.name - The user's name (added this field).
  * @throws {Error} If there is an issue with the network request or the response.
  * @returns {Promise<Object>} A Promise that resolves to the response JSON data.
  */
@@ -35,21 +37,18 @@ async function loginUser(url, data) {
     const response = await fetch(url, postData);
     const json = await response.json();
 
-
     if (response.ok) {
-
-      const accessToken = json.accessToken;
-      
-      saveUserData(accessToken);
-
+      const { accessToken, ...profile } = json;
+      saveUserData(accessToken, profile);
       window.location.href = '/profile/index.html';
     } else {
-
       const errorMessage = document.getElementById('error-message');
       errorMessage.textContent = 'Wrong email or password, please try again.';
     }
     return json;
   } catch (error) {
+    console.error('Error during login:', error);
+    // Handle errors as needed
   }
 }
 
@@ -76,6 +75,6 @@ document.addEventListener('DOMContentLoaded', function () {
       password: passwordInput.value,
     };
 
-    await loginUser(`${ApiUrl}/api/v1/social/auth/login`, { name, email, password });
+    await loginUser(`${ApiUrl}/api/v1/auction/auth/login`, { name, email, password });
   });
 });
