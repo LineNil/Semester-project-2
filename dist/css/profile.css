@@ -9714,80 +9714,215 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-body, html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
+body {
+  background-color: #E4E2E1;
 }
 
-.navbar {
-  z-index: 1;
-  font-family: "Inria Serif", serif;
-}
-
-.login-page {
-  font-family: "Inria Serif", serif;
-}
-
-.no-account {
-  color: rgba(255, 255, 255, 0.741);
-  padding-right: 36px;
-  top: -35px;
+.logo {
+  width: 8%;
   position: relative;
 }
 
-.no-account:hover {
-  color: rgb(255, 255, 255);
+.body-container {
+  margin-top: 58px;
 }
 
-.login-signup-text {
-  color: rgba(255, 255, 255, 0.741);
+.profile-image-container {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  margin: 0 auto;
 }
 
-.login-signup-text:hover {
-  color: rgb(255, 255, 255);
+.profile-image-container:hover .profile-img {
+  opacity: 0.3;
 }
 
-footer {
+.profile-img {
+  width: 100%;
+  height: 100%;
+}
+
+.edit-avatar-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  font-size: 11px;
+  padding: 30px 20px;
+  background-color: #fefefe;
+  border: none;
+  border-radius: 50%;
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+}
+
+.profile-image-container:hover .edit-avatar-button {
+  opacity: 1;
+}
+
+.content-font,
+.listing-heading {
   font-family: "Inria Serif", serif;
 }
 
-.fa-instagram {
-  background: linear-gradient(45deg, #feda75, #fa7e5e, #d62976, #962fbf, #4f5bd5);
-  -webkit-background-clip: text;
-  color: transparent;
+.profile-name {
+  display: flex;
+  justify-content: center;
+  margin-top: 7%;
+  font-size: 25px;
+  font-family: "Inria Serif", serif;
 }
 
-.fa-facebook {
-  color: #1747a1;
+.credits {
+  display: flex;
+  justify-content: center;
+  font-size: 15px;
 }
 
-.fa-twitter {
-  color: #22c2ff;
+.heading-font {
+  font-size: 20px;
+  font-family: "Inria Serif", serif;
+}
+
+.delete-btn {
+  color: black;
+}
+
+.delete-btn:hover {
+  color: red;
+}
+
+.btn-logout:hover,
+.btn-logout:active {
+  background-color: #dad6d4;
+}
+
+.profile-btn:hover,
+.profile-btn:active {
+  background-color: #dad6d4;
+}
+
+.place-bid-btn:hover,
+.place-bid-btn:active {
+  background-color: rgba(228, 226, 225, 0.5725490196);
+}
+
+.place-bid-btn,
+.profile-btn,
+.btn-logout {
+  border: 1px rgba(0, 0, 0, 0.477) solid;
+}
+
+.custom-search-input {
+  width: 150px;
+}
+
+.delete-icon {
+  margin-left: 20px;
+}
+
+.delete-icon:hover,
+.delete-icon:active {
+  color: red;
+}
+
+.listings-top-h {
+  font-family: "Inria Serif", serif;
+  font-size: 30px;
+}
+
+.searchInput {
+  width: 40%;
+  /*right: 0px;
+  position: absolute;*/
+  margin-left: 4%;
+}
+
+.left-col {
+  border-right: 2px solid rgba(0, 0, 0, 0.22);
+}
+
+.right-col {
+  justify-content: center;
+}
+
+.bg-listing {
+  background-color: white;
+}
+
+.listing-img {
+  width: 100%;
+  padding: 10%;
+}
+
+.bid-card {
+  background-color: rgba(255, 255, 255, 0.223);
+}
+
+.font-bid {
+  font-family: "Inria Serif", serif;
+}
+
+.deadline {
+  font-size: 25px;
+}
+
+.bid-warning {
+  color: rgb(171, 171, 171);
+  font-family: "Roboto", sans-serif;
+  font-size: 13px;
+}
+
+.fa-circle-question {
+  color: #7e7e7e;
+}
+
+.previous-bids {
+  border-top: 2px solid rgba(0, 0, 0, 0.22);
+  font-size: 20px;
+}
+
+.bidder-name {
+  border-bottom: 2px solid rgba(0, 0, 0, 0.22);
 }
 
 @media (max-width: 767px) {
-  .background-img {
-    background-position: 31% center;
+  .logo {
+    width: 25%;
+    position: inherit;
   }
-  .no-account {
-    padding-left: 200px;
-    padding-right: 0px;
-    top: -142px;
-    position: relative;
-    font-size: 10px;
+  .body-container {
+    margin-top: 35px;
   }
-  .opening-img,
-  .new-image {
-    display: none;
+  .left-col {
+    border: none;
   }
-  .align-items-end.text-center {
-    align-items: center !important;
-    text-align: center !important;
+  .heading-font,
+  .content-font {
+    font-size: 15px;
   }
-  .mb-4 {
-    margin-bottom: 4px !important;
+  .left-col {
+    padding: 0px;
+  }
+  #postImage {
+    font-size: 13px;
+  }
+  .right-col-mq {
+    margin: 0px;
+  }
+  .listings-top-h {
+    padding-top: 20px;
+  }
+  .searchInput {
+    width: 50%;
   }
 }
 
-/*# sourceMappingURL=universal.css.map */
+/*# sourceMappingURL=profile.css.map */
