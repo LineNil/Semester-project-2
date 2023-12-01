@@ -136,17 +136,17 @@ listingForm.addEventListener('submit', async function (event) {
 
   // Sjekk om media URL er gyldig
 if (mediaUrl) {
-  // Legg til logikk for å håndtere den innsendte media URL-en
+
   console.log('Media URL:', mediaUrl);
 } else {
   console.error('Media URL is required');
-  // Eventuell alternativ håndtering, for eksempel gi brukeren en feilmelding
+
 }
 
   // Sjekk om accessToken er definert
   if (!accessToken) {
     console.error('Access token is undefined');
-    // Du kan håndtere dette tilfellet, for eksempel ved å omdirigere brukeren til påloggingssiden.
+
     return;
   }
 
@@ -172,8 +172,7 @@ console.log('Media URLs in newListing:', newListing.media);
       auctionImg.src = newListing.media[0];
     } else {
       console.error('Media information missing or invalid in newListing');
-      // Eventuell alternativ håndtering, for eksempel en standardbilde URL
-      // auctionImg.src = 'https://eksempel.com/standard-bilde.jpg';
+
     }
     
     auctionImg.classList.add('listing-img');
