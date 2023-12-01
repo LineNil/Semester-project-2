@@ -1,13 +1,14 @@
 const ApiUrl = 'https://api.noroff.dev/api/v1';
 const listingsUrl = '/auction/listings?_bids=true';
 
-
+//funksjon for å logge ut///////////////////////////////
 function logoutUser(){
   localStorage.removeItem('accessToken');
   localStorage.removeItem('profile');
 
   window.location.href = '../index.html';
 }
+///////////////////////////////////////////////////////////
 
 async function fetchWithToken(url) {
   try {
@@ -29,7 +30,7 @@ async function fetchWithToken(url) {
     json.forEach((auction) => {
       if (auction.title && auction.media && auction.media.length) {
 
-        /*rad 1 auksjoner*/ 
+        //////////////////////////rad 1 auksjoner////////////////////////////////////
         const auctionDiv = document.createElement('div');
         auctionDiv.classList.add('row', 'pt3', 'right-col', 'mt-5');
 
@@ -55,7 +56,7 @@ async function fetchWithToken(url) {
 
 
 
-        /*rad 2 bud*/ 
+        /////////////////////////////rad 2 bud///////////////////////////////////
 
 
         const bidsDiv = document.createElement('div');
@@ -91,24 +92,33 @@ async function fetchWithToken(url) {
         deadlineRow.appendChild(deadlineWarning);
 
 
-        /*boks for å plassere bud*/
-        
+
+
+
+        /////////////////Legge til bud////////////////////////////////////
+
+        //boks for å plassere bud
         const placeBidContainer = document.createElement('div');
         placeBidContainer.classList.add('container');
         bidsDiv.appendChild(placeBidContainer);
 
-      
+
+        //diven for bud skjema
         const bidCard = document.createElement('div');
         bidCard.classList.add('bid-card', 'p-3');
         bidsDiv.appendChild(bidCard);
 
+
+        //oppretter skjema for budgiving
         const bidForm = document.createElement('form');
         bidCard.appendChild(bidForm);
+
 
         // Opprett en div for form-group
         const formGroupDiv = document.createElement('div');
         formGroupDiv.classList.add('form-group');
         bidForm.appendChild(formGroupDiv);
+
 
         // Opprett en label for inndatafeltet
        const bidLabel = document.createElement('label');
@@ -117,6 +127,8 @@ async function fetchWithToken(url) {
        bidLabel.classList.add('mb-2');
        formGroupDiv.appendChild(bidLabel);
 
+
+      
        // Opprett inndatafeltet
        const bidInput = document.createElement('input');
        bidInput.type = 'text';
@@ -126,11 +138,71 @@ async function fetchWithToken(url) {
        bidInput.required = true;
        bidLabel.appendChild(bidInput);
 
+
+       //knapp for å legge inn bud
        const placeBidButton = document.createElement('button');
        placeBidButton.type = 'button';
        placeBidButton.classList.add('btn', 'place-bid-btn', 'mt-4');
        placeBidButton.textContent = 'Place bid';
        bidForm.appendChild(placeBidButton);
+
+
+       // Legg til hendelseslytter for Place bid-knappen
+      placeBidButton.addEventListener('click', async function () {
+        try {
+
+
+       // Hent verdien fra budinndatafeltet
+       const bidAmount = bidInput.value.trim();
+
+
+      // Sjekk om budbeløpet er gyldig
+        if (!bidAmount || isNaN(bidAmount) || bidAmount <= 0) {
+         console.error('Invalid bid amount');
+        return;
+      }
+
+
+    // Opprett et budobjekt
+    const bidData = {
+      amount: parseFloat(bidAmount), // Konverter til flyttall avhengig av API-krav
+    };
+
+
+    // Utfør en POST-forespørsel til auksjons-APIet for å legge inn et bud
+    const response = await fetch(`${ApiUrl}/auction/listings/${auction.id}/bids`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`, // Legg til autorisasjon hvis nødvendig
+      },
+      body: JSON.stringify(bidData),
+    });
+
+    if (response.ok) {
+      const newBid = await response.json();
+      console.log('New Bid:', newBid);
+      alert('Bid placed successfully!');
+    
+    } else {
+      console.error('Error placing bid:', response.statusText);
+      
+    }
+  } catch (error) {
+    console.error('Error placing bid:', error);
+    
+  }
+});
+
+/////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
 
        const bidWarningDiv = document.createElement('div');
        bidWarningDiv.classList.add('d-flex', 'mt-3');
@@ -192,7 +264,7 @@ async function fetchWithToken(url) {
 }
 
 
-// Legg til en event listener for utloggingsknappen
+// //////////Legg til en event listener for utloggingsknappen///////////////////
 document.addEventListener('DOMContentLoaded', function () {
   const logoutButton = document.getElementById('logout');
   if (logoutButton) {
