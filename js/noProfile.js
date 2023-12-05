@@ -1,17 +1,7 @@
 const ApiUrl = 'https://api.noroff.dev/api/v1';
 const listingsUrl = '/auction/listings?_bids=true';
 
-//funksjon for å logge ut///////////////////////////////
-function logoutUser(){
-  localStorage.removeItem('accessToken');
-  localStorage.removeItem('profile');
-  localStorage.removeItem('userAvatar');
-
-  window.location.href = '../index.html';
-}
-///////////////////////////////////////////////////////////
-
-export async function fetchWithToken(url) {
+async function fetchWithToken(url) {
   try {
     const token = localStorage.getItem('accessToken');
     const getData = {
@@ -47,7 +37,7 @@ export async function fetchWithToken(url) {
         auctionDiv.classList.add('row', 'pt3', 'right-col', 'mt-5');
 
         const listingsDiv = document.createElement('div');
-        listingsDiv.classList.add('col-md-6', 'me-4', 'bg-listing', 'p-3', 'ps-5', 'pe-5', 'g-0');
+        listingsDiv.classList.add('col-md-6', 'me-4', 'bg-listing', 'p-3', 'ps-5', 'pe-5', 'g-0', 'listing-card');
         auctionDiv.appendChild(listingsDiv);
       
         const auctionImg = document.createElement('img');
@@ -64,7 +54,15 @@ export async function fetchWithToken(url) {
         auctionDescription.textContent = `Description: ${auction.description}`;
         auctionDescription.classList.add('listing-description', 'mt-3');
         listingsDiv.appendChild(auctionDescription);
-     
+
+
+
+
+
+
+
+
+
 
 
         /////////////////////////////rad 2 bud///////////////////////////////////
@@ -157,60 +155,17 @@ export async function fetchWithToken(url) {
        placeBidButton.textContent = 'Place bid';
        bidForm.appendChild(placeBidButton);
 
+placeBidButton.addEventListener('click', function () {
 
-       // Legg til hendelseslytter for Place bid-knappen
-      placeBidButton.addEventListener('click', async function () {
-        try {
-
-
-       // Hent verdien fra budinndatafeltet
-       const bidAmount = bidInput.value.trim();
-
-
-      // Sjekk om budbeløpet er gyldig
-        if (!bidAmount || isNaN(bidAmount) || bidAmount <= 0) {
-         console.error('Invalid bid amount');
-        return;
-      }
-
-
-    // Opprett et budobjekt
-    const bidData = {
-      amount: parseFloat(bidAmount), // Konverter til flyttall avhengig av API-krav
-    };
-
-
-    // Utfør en POST-forespørsel til auksjons-APIet for å legge inn et bud
-    const response = await fetch(`${ApiUrl}/auction/listings/${auction.id}/bids`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`, // Legg til autorisasjon hvis nødvendig
-      },
-      body: JSON.stringify(bidData),
-    });
-
-    if (response.ok) {
-      const newBid = await response.json();
-      console.log('New Bid:', newBid);
-      alert('Bid placed successfully!');
-    
-    } else {
-      console.error('Error placing bid:', response.statusText);
-      
-    }
-  } catch (error) {
-    console.error('Error placing bid:', error);
-    
-  }
+    alert('You must log in to place a bid.');
+  
 });
 
+
+
+
+
 /////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
 
 
 
@@ -239,49 +194,37 @@ export async function fetchWithToken(url) {
       const commentBidContainer = document.createElement('div');
       commentBidContainer.classList.add('comment-bid-container', 'd-flex', 'flex-column', 'ms-4');
       previousBidsDiv.appendChild(commentBidContainer);
-      
-      /////////////////////////////////////////////////////////////////////////////////////////7
-      
-      if (auction._count && auction._count.bids > 0 && auction.bids && auction.bids.length > 0) {
-        auction.bids.forEach((bid) => {
-          const bidderBid = document.createElement('div');
-          bidderBid.textContent = `${bid.bidderName}: ${bid.amount}`;
-          bidderBid.classList.add('active-bid', 'me-2');
-          commentBidContainer.appendChild(bidderBid);
-      
-          
-        });
-      } else {
-        // Display a message if there are no previous bids
-        const noBidsMessage = document.createElement('div');
-        noBidsMessage.textContent = 'No previous bids';
-        commentBidContainer.appendChild(noBidsMessage);
-      
-        console.log('No previous bids');
-      }
+
+      const loginToBid = document.createElement('p');
+      loginToBid.textContent = 'Login to view bids (button)';
+      previousBidsDiv.appendChild(loginToBid);
 
 
 
-////////////////////////////////////////////////////////
+      
 
         auctionContainer.appendChild(auctionDiv);
         auctionDiv.appendChild(bidsDiv);
         bidsDiv.appendChild(placeBidContainer);
       }
     });
+
+
+
+
+
+
+
+
   } catch (error) {
     console.log(error);
   }
+
+
 }
 
 
-// //////////Legg til en event listener for utloggingsknappen///////////////////
-document.addEventListener('DOMContentLoaded', function () {
-  const logoutButton = document.getElementById('logout');
-  if (logoutButton) {
-    logoutButton.addEventListener('click', logoutUser);
-  }
 
 
   fetchWithToken(ApiUrl  + listingsUrl);
-});
+
