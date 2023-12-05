@@ -14,6 +14,9 @@ async function registerUser(url, data) {
     const json = await response.json();
 
     if (response.ok) {
+
+      console.log('Avatar URL:', data.avatar);
+      localStorage.setItem('userAvatar', data.avatar || null);
       // Handle successful registration (optional)
       window.location.href = '/profile/index.html';
     } else {
@@ -36,11 +39,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const nameInput = document.getElementById('name');
     const passwordInput = document.getElementById('password');
+    const avatarInput = document.getElementById('avatar');
 
     const user = {
       name: nameInput.value,
       email: emailInput.value,
       password: passwordInput.value,
+      avatar: avatarInput.value,
     };
 
     const isValidNoroffEmail = isValidEmail(user.email);
