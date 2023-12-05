@@ -7,6 +7,7 @@ async function fetchProfileInfo() {
 
     if (storedProfile) {
       const profileInfo = JSON.parse(storedProfile);
+      console.log('Profile data found in local storage:', profileInfo);
       return profileInfo;
     } else {
       console.error('Profile data not found in local storage.');
@@ -17,6 +18,11 @@ async function fetchProfileInfo() {
     return null;
   }
 }
+
+
+
+
+
 
 // Funksjon for å laste opp mediefiler til serveren
 async function uploadMedia(files, accessToken) {
@@ -107,16 +113,24 @@ const profileInfo = await fetchProfileInfo(accessToken);
 console.log('ProfileInfo:', profileInfo);
 
 // Hent HTML-elementer
+const profileAvatarElement = document.getElementById('profileAvatar');
 const profileNameElement = document.getElementById('profileName');
 const profileCreditsElement = document.getElementById('profileCredits');
 const listingForm = document.getElementById('listingForm');
 
+
 // Vis brukerinformasjon på siden
+
+
+
+// viser navn
 if (profileInfo && profileInfo.name) {
   profileNameElement.textContent = `${profileInfo.name}`;
 } else {
   profileNameElement.textContent = 'Unknown User';
 }
+
+//viser credit
 
 if (profileInfo && profileInfo.credits) {
   profileCreditsElement.textContent = `Credits: ${profileInfo.credits}`;
@@ -165,7 +179,11 @@ if (mediaUrl) {
     listingsDiv.classList.add('col-md-6', 'me-4', 'bg-listing', 'p-3', 'ps-5', 'pe-5', 'g-0');
     auctionDiv.appendChild(listingsDiv);
 
-console.log('Media URLs in newListing:', newListing.media);
+
+
+    
+
+console.log('Media URLs in newListing:', newListing.media[0]);
     const auctionImg = document.createElement('img');
     // Sjekk om media informasjon er tilgjengelig og gyldig
     if (newListing.media && newListing.media.length > 0 && newListing.media[0]) {
