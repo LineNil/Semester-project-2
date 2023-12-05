@@ -15,6 +15,8 @@
   <title>Profile</title>
   <script defer type="module" src="../js/listings.js"></script>
   <script defer type="module" src="../js/newListing.js"></script>
+  <script defer type="module" src="../js/avatar.js"></script>
+  <script defer type="module" src="../js/search.js"></script>
   <!--<script defer type="module" src="../js/postListing.js"></script>-->
 </head>
   <body>
@@ -37,17 +39,25 @@
         <!-- Venstre kolonne -->
         <div class="left-col col-md-4 pe-5 ps-4">
           <div class="profile-image-container">
-            <img
-                src="/images/judgehammer.jpg"
-                alt="profile image"
-                class="profile-img"
-            />
-            <button class="edit-avatar-button">Update</button>
-        </div>
+            <img id="profileAvatar" src="" alt="">/>
+
+          </div>
+
+
+
+
         
         <div>
           <h1 class="profile-name" id="profileName">Loading...</h1>
           <p class="credits" id="profileCredits">Loading...</p>
+          <form id="avatarForm">
+            <input type="url" id="avatarUrl" name="avatarUrl" >
+<button id="updateAvatarBtn" type="submit" class="btn profile-btn content-font">Update</button>            
+          </form>
+          
+
+
+
           <h2 class="heading-font mb-4 mt-5">New item:</h2>
           
           <form id="listingForm">
@@ -99,12 +109,14 @@
         <!-- Høyre kolonner -->
         <div class="text-center right-col-mq col-md-7">
           <h4 class="listings-top-h">Listings</h4>
-          <input
+          <div class="searchDiv" id="searchDiv">
+            <input
             type="text"
             class="mt-5 form-control searchInput form-control-sm"
             id="searchInput"
             placeholder="Search"
           />
+          </div>
           <div id="auctionContainer"></div>
         </div>
       </div>
