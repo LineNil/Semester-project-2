@@ -6,9 +6,11 @@ const ApiUrl = 'https://api.noroff.dev';
  * @param {Object} profileData - The user's profile information.
  */
 
-function saveUserData(accessToken, profileData) {
+function saveUserData(accessToken, profileData, avatar) {
   localStorage.setItem('accessToken', accessToken);
   localStorage.setItem('profile', JSON.stringify(profileData));
+  localStorage.setItem('userAvatar', avatar || null);
+  console.log('User Avatar saved during login:', avatar)
 }
 
 /**
@@ -38,8 +40,8 @@ async function loginUser(url, data) {
     const json = await response.json();
 
     if (response.ok) {
-      const { accessToken, ...profile } = json;
-      saveUserData(accessToken, profile);
+      const { accessToken, avatar, ...profile } = json;
+      saveUserData(accessToken, profile, avatar);
       window.location.href = '/profile/index.html';
     } else {
       const errorMessage = document.getElementById('error-message');
