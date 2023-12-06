@@ -9839,7 +9839,7 @@ body {
 
 .listing-img {
   width: 100%;
-  padding: 10%;
+  height: auto;
 }
 
 .bid-card {

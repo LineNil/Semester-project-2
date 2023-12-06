@@ -1,28 +1,6 @@
+// newlisting.js
+
 const ApiUrl = 'https://api.noroff.dev/api/v1';
-
-// Funksjon for å hente brukerprofilinformasjon fra lokal lagring
-async function fetchProfileInfo() {
-  try {
-    const storedProfile = localStorage.getItem('profile');
-
-    if (storedProfile) {
-      const profileInfo = JSON.parse(storedProfile);
-      console.log('Profile data found in local storage:', profileInfo);
-      return profileInfo;
-    } else {
-      console.error('Profile data not found in local storage.');
-      return null;
-    }
-  } catch (error) {
-    console.error('Error fetching profile info:', error);
-    return null;
-  }
-}
-
-
-
-
-
 
 // Funksjon for å laste opp mediefiler til serveren
 async function uploadMedia(files, accessToken) {
@@ -54,7 +32,7 @@ async function uploadMedia(files, accessToken) {
 }
 
 // Funksjon for å opprette en ny auksjonsoppføring
-async function createNewListing(listingTitle, listingDeadline, listingContent, listingMedia, accessToken) {
+async function createNewListing(listingTitle, listingDeadline, listingContent, mediaUrl, accessToken) {
   try {
     const endsAtDate = new Date(listingDeadline);
 
@@ -64,8 +42,8 @@ async function createNewListing(listingTitle, listingDeadline, listingContent, l
       return null;
     }
 
-    // Last opp mediefiler hvis de er inkludert
-    const mediaUrls = listingMedia && listingMedia.length > 0 ? await uploadMedia(listingMedia, accessToken) : [];
+    // Use the entered media URL directly
+    const mediaUrls = mediaUrl ? [mediaUrl] : [];
 
     // Opprett auksjonsdataobjekt
     const listingData = {
@@ -104,39 +82,8 @@ async function createNewListing(listingTitle, listingDeadline, listingContent, l
   }
 }
 
-// Logging for accessToken
-const accessToken = localStorage.getItem('accessToken');
-console.log('AccessToken:', accessToken);
-
-// Logging for profileInfo
-const profileInfo = await fetchProfileInfo(accessToken);
-console.log('ProfileInfo:', profileInfo);
-
 // Hent HTML-elementer
-const profileAvatarElement = document.getElementById('profileAvatar');
-const profileNameElement = document.getElementById('profileName');
-const profileCreditsElement = document.getElementById('profileCredits');
 const listingForm = document.getElementById('listingForm');
-
-
-// Vis brukerinformasjon på siden
-
-
-
-// viser navn
-if (profileInfo && profileInfo.name) {
-  profileNameElement.textContent = `${profileInfo.name}`;
-} else {
-  profileNameElement.textContent = 'Unknown User';
-}
-
-//viser credit
-
-if (profileInfo && profileInfo.credits) {
-  profileCreditsElement.textContent = `Credits: ${profileInfo.credits}`;
-} else {
-  profileCreditsElement.textContent = 'Unknown Credit';
-}
 
 // Event listener for auksjonsformularet
 listingForm.addEventListener('submit', async function (event) {
@@ -149,24 +96,23 @@ listingForm.addEventListener('submit', async function (event) {
   const mediaUrl = listingMediaInput.value.trim();
 
   // Sjekk om media URL er gyldig
-if (mediaUrl) {
-
-  console.log('Media URL:', mediaUrl);
-} else {
-  console.error('Media URL is required');
-
-}
+  if (mediaUrl) {
+    console.log('Media URL:', mediaUrl);
+  } else {
+    console.error('Media URL is required');
+    return;
+  }
 
   // Sjekk om accessToken er definert
+  const accessToken = localStorage.getItem('accessToken');
   if (!accessToken) {
     console.error('Access token is undefined');
-
     return;
   }
 
   // Opprett en ny auksjonsoppføring
-  const newListing = await createNewListing(listingTitle, listingDeadline, listingContent, listingMediaInput.files, accessToken);
-  console.log('New Listing:', newListing); 
+  const newListing = await createNewListing(listingTitle, listingDeadline, listingContent, mediaUrl, accessToken);
+  console.log('New Listing:', newListing);
 
   if (newListing) {
     // Opprett HTML-elementer for den nye auksjonsoppføringen
@@ -179,24 +125,18 @@ if (mediaUrl) {
     listingsDiv.classList.add('col-md-6', 'me-4', 'bg-listing', 'p-3', 'ps-5', 'pe-5', 'g-0');
     auctionDiv.appendChild(listingsDiv);
 
-
-
-    
-
-console.log('Media URLs in newListing:', newListing.media[0]);
+    console.log('Media URLs in newListing:', newListing.media[0]);
     const auctionImg = document.createElement('img');
     // Sjekk om media informasjon er tilgjengelig og gyldig
     if (newListing.media && newListing.media.length > 0 && newListing.media[0]) {
       auctionImg.src = newListing.media[0];
     } else {
       console.error('Media information missing or invalid in newListing');
-
     }
-    
+
     auctionImg.classList.add('listing-img');
     listingsDiv.appendChild(auctionImg);
     console.log('Media URL:', newListing.media[0]);
-
 
     const auctionTitle = document.createElement('h4');
     auctionTitle.textContent = `Title: ${newListing.title}`;

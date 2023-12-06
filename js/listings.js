@@ -47,7 +47,7 @@ export async function fetchWithToken(url) {
         auctionDiv.classList.add('row', 'pt3', 'right-col', 'mt-5');
 
         const listingsDiv = document.createElement('div');
-        listingsDiv.classList.add('col-md-6', 'me-4', 'bg-listing', 'p-3', 'ps-5', 'pe-5', 'g-0');
+        listingsDiv.classList.add('col-md-6', 'bg-listing', 'p-3', 'ps-5', 'pe-5', 'g-0');
         auctionDiv.appendChild(listingsDiv);
       
         const auctionImg = document.createElement('img');
