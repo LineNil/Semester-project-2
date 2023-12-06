@@ -50,10 +50,17 @@ export async function fetchWithToken(url) {
         listingsDiv.classList.add('col-md-6', 'bg-listing', 'p-3', 'ps-5', 'pe-5', 'g-0');
         auctionDiv.appendChild(listingsDiv);
       
-        const auctionImg = document.createElement('img');
-        auctionImg.src = auction.media[0];
-        auctionImg.classList.add('listing-img', 'profile-img');
-        listingsDiv.appendChild(auctionImg);
+// Sjekk om media informasjon er tilgjengelig og gyldig
+if (auction.media && auction.media.length > 0) {
+  auction.media.forEach((mediaUrl) => {
+    const auctionImg = document.createElement('img');
+    auctionImg.src = mediaUrl;
+    auctionImg.classList.add('listing-img', 'profile-img');
+    listingsDiv.appendChild(auctionImg);
+  });
+} else {
+  console.error('Media information missing or invalid in auction');
+}
 
         const auctionTitle = document.createElement('h4');
         auctionTitle.textContent = `Title: ${auction.title}`;

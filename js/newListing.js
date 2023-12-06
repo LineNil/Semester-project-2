@@ -1,5 +1,3 @@
-// newlisting.js
-
 const ApiUrl = 'https://api.noroff.dev/api/v1';
 
 // Funksjon for å laste opp mediefiler til serveren
@@ -93,13 +91,13 @@ listingForm.addEventListener('submit', async function (event) {
   const listingDeadline = document.getElementById('listingDeadline').value;
   const listingContent = document.getElementById('listingContent').value;
   const listingMediaInput = document.getElementById('listingMedia');
-  const mediaUrl = listingMediaInput.value.trim();
+  const mediaUrls = listingMediaInput.value.split(',').map(url => url.trim());
 
-  // Sjekk om media URL er gyldig
-  if (mediaUrl) {
-    console.log('Media URL:', mediaUrl);
+  // Sjekk om minst én media URL er tilgjengelig
+  if (mediaUrls.length > 0 && mediaUrls[0] !== '') {
+    console.log('Media URLs:', mediaUrls);
   } else {
-    console.error('Media URL is required');
+    console.error('At least one Media URL is required');
     return;
   }
 
@@ -111,7 +109,7 @@ listingForm.addEventListener('submit', async function (event) {
   }
 
   // Opprett en ny auksjonsoppføring
-  const newListing = await createNewListing(listingTitle, listingDeadline, listingContent, mediaUrl, accessToken);
+  const newListing = await createNewListing(listingTitle, listingDeadline, listingContent, mediaUrls, accessToken);
   console.log('New Listing:', newListing);
 
   if (newListing) {
