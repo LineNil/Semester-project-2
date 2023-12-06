@@ -7,6 +7,9 @@ async function uploadMedia(files, accessToken) {
     for (const file of files) {
       formData.append('media', file);
     }
+
+
+    console.log('FormData:', formData);
     const response = await fetch(`${ApiUrl}/auction/listings/media`, {
       method: 'POST',
       headers: {
@@ -30,7 +33,7 @@ async function uploadMedia(files, accessToken) {
 }
 
 // Funksjon for å opprette en ny auksjonsoppføring
-async function createNewListing(listingTitle, listingDeadline, listingContent, mediaUrl, accessToken) {
+async function createNewListing(listingTitle, listingDeadline, listingContent, mediaUrls, accessToken) {
   try {
     const endsAtDate = new Date(listingDeadline);
 
@@ -41,14 +44,14 @@ async function createNewListing(listingTitle, listingDeadline, listingContent, m
     }
 
     // Use the entered media URL directly
-    const mediaUrls = mediaUrl ? [mediaUrl] : [];
+    const mediaArray = mediaUrls && mediaUrls.length > 0 ? mediaUrls : [];
 
     // Opprett auksjonsdataobjekt
     const listingData = {
       title: listingTitle,
       endsAt: endsAtDate.toISOString(),
       description: listingContent,
-      media: mediaUrls,
+      media: mediaArray,
     };
 
     // Sjekk om accessToken er definert
