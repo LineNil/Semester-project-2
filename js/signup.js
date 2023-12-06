@@ -18,7 +18,7 @@ async function registerUser(url, data) {
       console.log('Avatar URL:', data.avatar);
       localStorage.setItem('userAvatar', data.avatar || null);
       // Handle successful registration (optional)
-      window.location.href = '/profile/index.html';
+      window.location.href = '/index.html';
     } else {
       // Handle registration error (optional)
       console.error('Registration failed:', json.message);
@@ -39,7 +39,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const nameInput = document.getElementById('name');
     const passwordInput = document.getElementById('password');
+    const confirmPasswordInput = document.getElementById('confirmPassword')
     const avatarInput = document.getElementById('avatar');
+
+    if(passwordInput.value !== confirmPasswordInput.value) {
+      console.error ('Password and Confirm Password do not match');
+      return;
+    }
 
     const user = {
       name: nameInput.value,
