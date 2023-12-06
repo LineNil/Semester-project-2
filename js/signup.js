@@ -14,13 +14,12 @@ async function registerUser(url, data) {
     const json = await response.json();
 
     if (response.ok) {
-
-      console.log('Avatar URL:', data.avatar);
+      alert ('Welcome to AuctionNest! Your signup was a success! (Please log in to continue)');
       localStorage.setItem('userAvatar', data.avatar || null);
-      // Handle successful registration (optional)
+      
       window.location.href = '/index.html';
+      
     } else {
-      // Handle registration error (optional)
       console.error('Registration failed:', json.message);
     }
     return json;
@@ -43,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const avatarInput = document.getElementById('avatar');
 
     if(passwordInput.value !== confirmPasswordInput.value) {
-      console.error ('Password and Confirm Password do not match');
+      alert('Passwords do not match')
       return;
     }
 
