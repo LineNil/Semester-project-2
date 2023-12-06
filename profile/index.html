@@ -51,10 +51,13 @@
         <div>
           <h1 class="profile-name" id="profileName">Loading...</h1>
           <p class="credits" id="profileCredits">Loading...</p>
-          <form id="avatarForm">
-            <input type="url" id="avatarUrl" name="avatarUrl" >
-<button id="updateAvatarBtn" type="submit" class="btn profile-btn content-font">Update</button>            
-          </form>
+
+
+<form id="avatarForm">
+  <input type="url" id="avatarUrl" name="avatarUrl" placeholder="Update avatar (URL)">
+  <button id="updateAvatarBtn" type="submit" class="btn profile-btn content-font">Update</button>
+</form>
+
           
 
 
@@ -111,8 +114,9 @@
         </div>
         <!-- Høyre kolonner -->
         <div class="text-center right-col-mq col-md-7">
-          <h4 class="listings-top-h">Listings</h4>
+          <h1 class="listings-top-h">Listings</h1>
           <div class="searchDiv" id="searchDiv">
+            
             <input
             type="text"
             class="mt-5 form-control searchInput form-control-sm"

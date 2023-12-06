@@ -1,3 +1,13 @@
+/**
+ * Function to register a new user.
+ * @param {string} url - The API endpoint URL for user registration.
+ * @param {User} data - User data including name, email, password, and avatar.
+ * @returns {Promise<object>} A promise that resolves to the JSON response from the registration API.
+ * @throws {Error} If there is an error during the registration process. 
+*/
+
+
+
 const ApiUrl = 'https://api.noroff.dev';
 
 async function registerUser(url, data) {
@@ -64,6 +74,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     await registerUser(`${ApiUrl}/api/v1/auction/auth/register`, user);
   });
+
+    /**
+   * Function to check if an email is a valid Noroff email.
+   * @param {string} email - The email address to validate.
+   * @returns {boolean} True if the email is a valid Noroff email, false otherwise.
+   */
 
   function isValidEmail(email) {
     const noroffEmailRegex = /^(.+)@(stud\.)?noroff\.no$/;
