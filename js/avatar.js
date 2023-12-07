@@ -7,14 +7,11 @@ async function fetchProfileInfo() {
 
     if (storedProfile) {
       const profileInfo = JSON.parse(storedProfile);
-      console.log('Profile data found in local storage:', profileInfo);
       return profileInfo;
     } else {
-      console.error('Profile data not found in local storage.');
       return null;
     }
   } catch (error) {
-    console.error('Error fetching profile info:', error);
     return null;
   }
 }
@@ -40,7 +37,6 @@ document.addEventListener('DOMContentLoaded', async function () {
 
   avatarForm.addEventListener('submit', async function (event) {
     event.preventDefault();
-    console.log('Submit event handler is working!');
     handleUpdateAvatar();
   });
 
@@ -51,8 +47,8 @@ document.addEventListener('DOMContentLoaded', async function () {
       try {
         await updateAvatarOnServer(newAvatarUrl, profileInfo);
         saveAvatarToLocal(newAvatarUrl, profileInfo);
+        alert ('Avatar updated successfully!')
       } catch (error) {
-        console.error('Error updating avatar:', error);
         alert('There was a problem updating your avatar.');
       }
     } else {
@@ -79,7 +75,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
   function saveAvatarToLocal(newAvatarUrl, profileInfo) {
     localStorage.setItem('userAvatar', newAvatarUrl);
-    console.log(newAvatarUrl);
+
 
     profileAvatarElement.src = newAvatarUrl;
 

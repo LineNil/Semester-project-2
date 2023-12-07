@@ -1,6 +1,14 @@
+/**
+ * Uploads media files to the server.
+ *
+ * @param {File[]} files - An array of File objects representing the media files.
+ * @param {string} accessToken - The access token for authorization.
+ * @returns {Promise<string[] | null>} A promise that resolves to an array of media URLs or null if there is an error.
+ */
+
 const ApiUrl = 'https://api.noroff.dev/api/v1';
 
-// Funksjon for å laste opp mediefiler til serveren
+
 async function uploadMedia(files, accessToken) {
   try {
     const formData = new FormData();
@@ -20,10 +28,10 @@ async function uploadMedia(files, accessToken) {
 
     if (response.ok) {
       const mediaUrls = await response.json();
-      console.log('Media URLs:', mediaUrls);
+      
       return mediaUrls;
     } else {
-      console.error('Error uploading media:', response.statusText);
+      
       return null;
     }
   } catch (error) {
@@ -32,21 +40,31 @@ async function uploadMedia(files, accessToken) {
   }
 }
 
-// Funksjon for å opprette en ny auksjonsoppføring
+/**
+ * Creates a new auction listing.
+ *
+ * @param {string} listingTitle - The title of the auction listing.
+ * @param {string} listingDeadline - The deadline for the auction listing.
+ * @param {string} listingContent - The description content of the auction listing.
+ * @param {string[]} mediaUrls - An array of media URLs associated with the auction listing.
+ * @param {string} accessToken - The access token for authorization.
+ * @returns {Promise<Object | null>} A promise that resolves to the new auction listing object or null if there is an error.
+ */
+
 async function createNewListing(listingTitle, listingDeadline, listingContent, mediaUrls, accessToken) {
   try {
     const endsAtDate = new Date(listingDeadline);
 
-    // Sjekk om sluttdatoen er gyldig
+    
     if (!(endsAtDate instanceof Date) || isNaN(endsAtDate) || endsAtDate <= new Date()) {
       console.error('Invalid endsAt date');
       return null;
     }
 
-    // Use the entered media URL directly
+    
     const mediaArray = mediaUrls && mediaUrls.length > 0 ? mediaUrls : [];
 
-    // Opprett auksjonsdataobjekt
+    
     const listingData = {
       title: listingTitle,
       endsAt: endsAtDate.toISOString(),
@@ -54,12 +72,12 @@ async function createNewListing(listingTitle, listingDeadline, listingContent, m
       media: mediaArray,
     };
 
-    // Sjekk om accessToken er definert
+   
     if (!accessToken) {
       return null;
     }
 
-    // Utfør en POST-forespørsel til auksjons-APIet med auksjonsdataene
+    
     const response = await fetch(`${ApiUrl}/auction/listings`, {
       method: 'POST',
       headers: {
@@ -83,10 +101,10 @@ async function createNewListing(listingTitle, listingDeadline, listingContent, m
   }
 }
 
-// Hent HTML-elementer
+
 const listingForm = document.getElementById('listingForm');
 
-// Event listener for auksjonsformularet
+
 listingForm.addEventListener('submit', async function (event) {
   event.preventDefault();
 
@@ -96,7 +114,7 @@ listingForm.addEventListener('submit', async function (event) {
   const listingMediaInput = document.getElementById('listingMedia');
   const mediaUrls = listingMediaInput.value.split(',').map(url => url.trim());
 
-  // Sjekk om minst én media URL er tilgjengelig
+  
   if (mediaUrls.length > 0 && mediaUrls[0] !== '') {
     console.log('Media URLs:', mediaUrls);
   } else {
@@ -104,19 +122,20 @@ listingForm.addEventListener('submit', async function (event) {
     return;
   }
 
-  // Sjekk om accessToken er definert
+
   const accessToken = localStorage.getItem('accessToken');
   if (!accessToken) {
     console.error('Access token is undefined');
     return;
   }
 
-  // Opprett en ny auksjonsoppføring
+
   const newListing = await createNewListing(listingTitle, listingDeadline, listingContent, mediaUrls, accessToken);
   console.log('New Listing:', newListing);
 
   if (newListing) {
-    // Opprett HTML-elementer for den nye auksjonsoppføringen
+
+
     const auctionContainer = document.getElementById('auctionContainer');
 
     const auctionDiv = document.createElement('div');
@@ -128,7 +147,7 @@ listingForm.addEventListener('submit', async function (event) {
 
     console.log('Media URLs in newListing:', newListing.media[0]);
     const auctionImg = document.createElement('img');
-    // Sjekk om media informasjon er tilgjengelig og gyldig
+
     if (newListing.media && newListing.media.length > 0 && newListing.media[0]) {
       auctionImg.src = newListing.media[0];
     } else {
@@ -149,10 +168,10 @@ listingForm.addEventListener('submit', async function (event) {
     auctionDescription.classList.add('listing-description', 'mt-3');
     listingsDiv.appendChild(auctionDescription);
 
-    // Legg til den nye auksjonsoppføringen på siden
+    
     auctionContainer.appendChild(auctionDiv);
 
-    // Tøm skjemafeltene
+  
     document.getElementById('listingTitle').value = '';
     document.getElementById('listingDeadline').value = '';
     document.getElementById('listingContent').value = '';

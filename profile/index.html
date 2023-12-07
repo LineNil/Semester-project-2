@@ -18,6 +18,7 @@
   <script defer type="module" src="../js/avatar.js"></script>
   <script defer type="module" src="../js/search.js"></script>
   <script defer type="module" src="../js/newListing.js"></script>
+  <script defer type="module" src="../js/backToTop.js"></script>
   <!--<script defer type="module" src="../js/postListing.js"></script>-->
 </head>
   <body>
@@ -62,9 +63,10 @@
 
 
 
-          <h2 class="heading-font mb-4 mt-5">New item:</h2>
           
-          <form id="listingForm">
+          
+          <form class="new-item" id="listingForm">
+            <h2 class="heading-font mb-4 mt-5">New item:</h2>
             <div class="form-group mb-3">
               <label for="listingTitle" class="content-font">Title</label>
               <input type="text" class="form-control" id="listingTitle" required />
@@ -110,7 +112,9 @@
               Post item
             </button>
           </form>
+          
         </div>
+        <!--<div id="backToTopBtn" class="back-to-top">&#8593; Back to Top</div>-->
         </div>
         <!-- Høyre kolonner -->
         <div class="text-center right-col-mq col-md-7">
@@ -124,7 +128,9 @@
             placeholder="Search"
           />
           </div>
+
           <div id="auctionContainer"></div>
+          
         </div>
       </div>
     </div>

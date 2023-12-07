@@ -2,7 +2,10 @@
 
 @import "variables";
 
-
+.back-to-top{
+  display: flex;
+  justify-content: center;
+}
 
 body, html {
   margin: 0;
