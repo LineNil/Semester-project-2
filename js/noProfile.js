@@ -1,6 +1,20 @@
+/**
+ * Constants containing the API URL.
+ * @constant {string}
+ */
 const ApiUrl = 'https://api.noroff.dev/api/v1';
 const listingsUrl = '/auction/listings?_bids=true';
 
+/**
+ * Asynchronously fetches data from a specified URL using a Bearer token for authorization,
+ * and populates the DOM with auction listings.
+ *
+ * @async
+ * @function
+ * @param {string} url - The URL to fetch data from.
+ * @throws {Error} If there is an issue with the fetch operation or rendering the listings.
+ * @returns {Promise<void>} A Promise that resolves when the fetch operation is complete.
+ */
 async function fetchWithToken(url) {
   try {
     const token = localStorage.getItem('accessToken');
@@ -22,17 +36,7 @@ async function fetchWithToken(url) {
       if (auction.title && auction.media && auction.media.length) {
 
 
-
-
-
-
-
-
-        ////////////////////avatar/////////////////
-
-
-
-        //////////////////////////rad 1 auksjoner////////////////////////////////////
+//row 1 auctions
         const auctionDiv = document.createElement('div');
         auctionDiv.classList.add('row', 'pt3', 'right-col', 'mt-5');
 
@@ -55,23 +59,11 @@ async function fetchWithToken(url) {
         auctionDescription.classList.add('listing-description', 'mt-3');
         listingsDiv.appendChild(auctionDescription);
 
-
-
-
-
-
-
-
-
-
-
-        /////////////////////////////rad 2 bud///////////////////////////////////
-
+        //row 2 bids
 
         const bidsDiv = document.createElement('div');
         bidsDiv.classList.add('col-md-5', 'bg-listing','font-bid', 'g-0');
 
-      
         const bidsContainer = document.createElement('div');
         bidsContainer.classList.add('container', 'p-4');
         bidsDiv.appendChild(bidsContainer);
@@ -100,45 +92,29 @@ async function fetchWithToken(url) {
         deadlineWarning.classList.add('bid-Warning');
         deadlineRow.appendChild(deadlineWarning);
 
+        //add bids
 
-
-
-
-        /////////////////Legge til bud////////////////////////////////////
-
-        //boks for å plassere bud
         const placeBidContainer = document.createElement('div');
         placeBidContainer.classList.add('container');
         bidsDiv.appendChild(placeBidContainer);
 
-
-        //diven for bud skjema
         const bidCard = document.createElement('div');
         bidCard.classList.add('bid-card', 'p-3');
         bidsDiv.appendChild(bidCard);
 
-
-        //oppretter skjema for budgiving
         const bidForm = document.createElement('form');
         bidCard.appendChild(bidForm);
 
-
-        // Opprett en div for form-group
         const formGroupDiv = document.createElement('div');
         formGroupDiv.classList.add('form-group');
         bidForm.appendChild(formGroupDiv);
 
-
-        // Opprett en label for inndatafeltet
        const bidLabel = document.createElement('label');
        bidLabel.textContent = 'Your Bid:';
        bidLabel.setAttribute('for', 'bidAmount');
        bidLabel.classList.add('mb-2');
        formGroupDiv.appendChild(bidLabel);
 
-
-      
-       // Opprett inndatafeltet
        const bidInput = document.createElement('input');
        bidInput.type = 'text';
        bidInput.classList.add('form-control');
@@ -147,8 +123,6 @@ async function fetchWithToken(url) {
        bidInput.required = true;
        bidLabel.appendChild(bidInput);
 
-
-       //knapp for å legge inn bud
        const placeBidButton = document.createElement('button');
        placeBidButton.type = 'button';
        placeBidButton.classList.add('btn', 'place-bid-btn', 'mt-4');
@@ -162,69 +136,47 @@ placeBidButton.addEventListener('click', function () {
 });
 
 
-
-
-
-/////////////////////////////////////////////////////////////////////////////////
-
-
-
-
        const bidWarningDiv = document.createElement('div');
        bidWarningDiv.classList.add('d-flex', 'mt-3');
        bidForm.appendChild(bidWarningDiv);
 
-      const questionIcon = document.createElement('i');
-      questionIcon.classList.add('fa-regular', 'fa-circle-question');
-      bidWarningDiv.appendChild(questionIcon);
+       const questionIcon = document.createElement('i');
+       questionIcon.classList.add('fa-regular', 'fa-circle-question');
+       bidWarningDiv.appendChild(questionIcon);
 
-      const bidWarningText = document.createElement('p');
-      bidWarningText.textContent = 'Bidding info';
-      bidWarningText.classList.add('bid-warning', 'ms-2');
-      bidWarningDiv.appendChild(bidWarningText);   
+       const bidWarningText = document.createElement('p');
+       bidWarningText.textContent = 'Bidding info';
+       bidWarningText.classList.add('bid-warning', 'ms-2');
+       bidWarningDiv.appendChild(bidWarningText);   
 
-      const previousBidsDiv = document.createElement('div');
-      previousBidsDiv.classList.add('previous-bids', 'pt-3');
-      bidsDiv.appendChild(previousBidsDiv);
+       const previousBidsDiv = document.createElement('div');
+       previousBidsDiv.classList.add('previous-bids', 'pt-3');
+       bidsDiv.appendChild(previousBidsDiv);
       
-      const previousBidsP = document.createElement('p');
-      previousBidsP.textContent = 'Previous bids';
-      previousBidsDiv.appendChild(previousBidsP);
+       const previousBidsP = document.createElement('p');
+       previousBidsP.textContent = 'Previous bids';
+       previousBidsDiv.appendChild(previousBidsP);
       
-      const commentBidContainer = document.createElement('div');
-      commentBidContainer.classList.add('comment-bid-container', 'd-flex', 'flex-column', 'ms-4');
-      previousBidsDiv.appendChild(commentBidContainer);
+       const commentBidContainer = document.createElement('div');
+       commentBidContainer.classList.add('comment-bid-container', 'd-flex', 'flex-column', 'ms-4');
+       previousBidsDiv.appendChild(commentBidContainer);
 
-      const loginToBid = document.createElement('p');
-      loginToBid.textContent = 'Login to view bids (button)';
-      previousBidsDiv.appendChild(loginToBid);
-
-
-
-      
-
-        auctionContainer.appendChild(auctionDiv);
-        auctionDiv.appendChild(bidsDiv);
-        bidsDiv.appendChild(placeBidContainer);
-      }
-    });
+       const loginToBid = document.createElement('p');
+       loginToBid.textContent = 'Login to view bids (button)';
+       previousBidsDiv.appendChild(loginToBid);
 
 
-
-
-
-
+      auctionContainer.appendChild(auctionDiv);
+      auctionDiv.appendChild(bidsDiv);
+      bidsDiv.appendChild(placeBidContainer);
+    }
+  });
 
 
   } catch (error) {
-    console.log(error);
+    const errorMessage = 'An error occurred. Please try again later.';
+    alert(errorMessage);
   }
-
-
 }
-
-
-
-
   fetchWithToken(ApiUrl  + listingsUrl);
 

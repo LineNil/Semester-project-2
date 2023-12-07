@@ -1,15 +1,16 @@
 /**
+ * Constant containing the API URL.
+ * @constant {string}
+ */
+const ApiUrl = 'https://api.noroff.dev';
+
+/**
  * Function to register a new user.
  * @param {string} url - The API endpoint URL for user registration.
  * @param {User} data - User data including name, email, password, and avatar.
  * @returns {Promise<object>} A promise that resolves to the JSON response from the registration API.
  * @throws {Error} If there is an error during the registration process. 
 */
-
-
-
-const ApiUrl = 'https://api.noroff.dev';
-
 async function registerUser(url, data) {
   try {
     const postData = {

@@ -1,49 +1,80 @@
-// profile.js
-
+/**
+ * Konstant som inneholder API-URLen.
+ * @constant {string}
+ */
 const ApiUrl = 'https://api.noroff.dev/api/v1';
 
-// Funksjon for å hente brukerprofilinformasjon fra lokal lagring
+/**
+ * Function to fetch user profile information from local storage.
+ *
+ * @async
+ * @function
+ * @throws {Error} If there is an error during the fetching of profile information.
+ * @returns {Promise<?Object>} A promise resolved with user profile information if available, otherwise null.
+ */
 async function fetchProfileInfo() {
   try {
+     /**
+     * The profile information stored in local storage.
+     * @type {?string}
+     */
     const storedProfile = localStorage.getItem('profile');
 
     if (storedProfile) {
+            /**
+       * The profile information as a JavaScript object.
+       * @type {Object}
+       */
       const profileInfo = JSON.parse(storedProfile);
-      console.log('Profile data found in local storage:', profileInfo);
+
       return profileInfo;
     } else {
-      console.error('Profile data not found in local storage.');
+
       return null;
     }
   } catch (error) {
-    console.error('Error fetching profile info:', error);
+
     return null;
   }
 }
-
-// Logging for accessToken
+/**
+ * AccessToken from local storage.
+ * @type {?string}
+ */
 const accessToken = localStorage.getItem('accessToken');
-console.log('AccessToken:', accessToken);
 
-// Logging for profileInfo
+/**
+ * User profile information fetched from local storage.
+ * @type {?Object}
+ */
 const profileInfo = await fetchProfileInfo();
-console.log('ProfileInfo:', profileInfo);
 
-// Hent HTML-elementer
+
+/**
+ * HTML element displaying the user's avatar.
+ * @type {HTMLElement}
+ */
 const profileAvatarElement = document.getElementById('profileAvatar');
+
+/**
+ * HTML element displaying the user's name.
+ * @type {HTMLElement}
+ */
 const profileNameElement = document.getElementById('profileName');
+
+/**
+ * HTML element displaying the user's credits.
+ * @type {HTMLElement}
+ */
 const profileCreditsElement = document.getElementById('profileCredits');
 
-// Vis brukerinformasjon på siden
 
-// viser navn
 if (profileInfo && profileInfo.name) {
   profileNameElement.textContent = `${profileInfo.name}`;
 } else {
   profileNameElement.textContent = 'Unknown User';
 }
 
-// viser credit
 if (profileInfo && profileInfo.credits) {
   profileCreditsElement.textContent = `Credits: ${profileInfo.credits}`;
 } else {

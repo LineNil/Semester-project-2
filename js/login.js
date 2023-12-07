@@ -1,3 +1,7 @@
+/**
+ * Constant containing the API URL.
+ * @constant {string}
+ */
 const ApiUrl = 'https://api.noroff.dev';
 
 /**
@@ -10,7 +14,6 @@ function saveUserData(accessToken, profileData, avatar) {
   localStorage.setItem('accessToken', accessToken);
   localStorage.setItem('profile', JSON.stringify(profileData));
   localStorage.setItem('userAvatar', avatar || null);
-  console.log('User Avatar saved during login:', avatar)
 }
 
 /**
@@ -49,8 +52,7 @@ async function loginUser(url, data) {
     }
     return json;
   } catch (error) {
-    console.error('Error during login:', error);
-    // Handle errors as needed
+    alert('Error during login. We apologize for the inconvenience. Please try again later.');
   }
 }
 
