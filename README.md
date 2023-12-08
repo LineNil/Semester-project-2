@@ -76,7 +76,9 @@ https://magical-wisp-a62485.netlify.app/
 	Git clone https://github.com/LineNil/Semester-project-2
     
 •	install dependencies/To compile SASS files into CSS:
+
    npm run watch
+   
    or open live site: 
    https://js2courseassignment.netlify.app/
 
