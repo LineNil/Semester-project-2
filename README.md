@@ -15,13 +15,21 @@ Noroff API documentation: https://docs.noroff.dev/auctionhouse-endpoints/authent
 The client has outlined the following user stories:
 
 •	A user with a stud.noroff.no email may register
+
 •	A registered user may login
+
 •	A registered user may logout
+
 •	A registered user may update their avatar
+
 •	A registered user may view their total credit
+
 •	A registered user may create a listing with a title, deadline date, media gallery, and description
+
 •	A registered user may add a bid to another user's listing
+
 •	A registered user may view bids made on a listing
+
 •	An unregistered user may search through listings
 
 ## Technical Restrictions
