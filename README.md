@@ -34,9 +34,13 @@ The client has outlined the following user stories:
 
 ## Technical Restrictions
 The company CTO has set the following technical restrictions:
+
 •	Must use an approved CSS framework (Bootstrap version >5.0.1)
+
 •	Must be hosted on an approved static host (Netlify)
+
 •	Must use an approved design application (Figma)
+
 •	Must use an approved planning application (Trello)
 
 
@@ -56,9 +60,13 @@ https://magical-wisp-a62485.netlify.app/
 
 ## Technologies Used
 •	HTML
+
 •	Bootstrap
+
 •	SASS/SCSS
+
 •	JavaScript
+
 •	live-server
 
 
