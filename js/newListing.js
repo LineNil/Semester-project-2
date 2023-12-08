@@ -4,45 +4,6 @@
  */
 const ApiUrl = 'https://api.noroff.dev/api/v1';
 
-/**
- * Uploads media files to the server.
- *
- * @param {File[]} files - An array of File objects representing the media files.
- * @param {string} accessToken - The access token for authorization.
- * @returns {Promise<string[] | null>} A promise that resolves to an array of media URLs or null if there is an error.
- */
-
-
-
-async function uploadMedia(files, accessToken) {
-  try {
-    const formData = new FormData();
-    for (const file of files) {
-      formData.append('media', file);
-    }
-
-    const response = await fetch(`${ApiUrl}/auction/listings/media`, {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${accessToken}`,
-      },
-      body: formData,
-    });
-
-    if (response.ok) {
-      const mediaUrls = await response.json();
-
-      return mediaUrls;
-
-    } else {
-      
-      return null;
-    }
-  } catch (error) {
-    alert('Error uploading media');
-    return null;
-  }
-}
 
 /**
  * Creates a new auction listing.
