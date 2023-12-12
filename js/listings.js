@@ -59,15 +59,27 @@ export async function fetchWithToken(url) {
     auctionDiv.appendChild(listingsDiv);
       
 
-if (auction.media && auction.media.length > 0) {
-  auction.media.forEach((mediaUrl) => {
-    const auctionImg = document.createElement('img');
-    auctionImg.src = mediaUrl;
-    auctionImg.classList.add('listing-img', 'profile-img');
-    listingsDiv.appendChild(auctionImg);
-  });
-}
+    if (auction.media && auction.media.length > 0) {
+      // Vis det første bildet som det store bildet
+      const mainAuctionImg = document.createElement('img');
+      mainAuctionImg.src = auction.media[0];
+      mainAuctionImg.classList.add('listing-img', 'profile-img');
+      listingsDiv.appendChild(mainAuctionImg);
 
+      if (auction.media.length > 1) {
+        const smallImagesContainer = document.createElement('div');
+        smallImagesContainer.classList.add('small-images-container', 'd-flex', 'mt-3');
+
+            // Legg til små bilder i containeren
+    auction.media.slice(1).forEach((mediaUrl) => {
+      const smallAuctionImg = document.createElement('img');
+      smallAuctionImg.src = mediaUrl;
+      smallAuctionImg.classList.add('small-listing-img', 'profile-img', 'm-2');
+      smallImagesContainer.appendChild(smallAuctionImg);
+  });
+  listingsDiv.appendChild(smallImagesContainer);
+}
+    }
     const auctionTitle = document.createElement('h4');
     auctionTitle.textContent = `Title: ${auction.title}`;
     auctionTitle.classList.add('listing-heading', 'pt-2');
@@ -95,7 +107,7 @@ if (auction.media && auction.media.length > 0) {
     bidsContainer.appendChild(deadlineRow);
 
     const deadlineDiv = document.createElement('div');
-    deadlineDiv.classList.add('col-md-12', 'd-flex', 'justift-content-center');
+    deadlineDiv.classList.add('col-md-12', 'flex-column', 'd-flex', 'justift-content-center');
     deadlineRow.appendChild(deadlineDiv);
 
     const deadline = document.createElement('p');
@@ -111,7 +123,7 @@ if (auction.media && auction.media.length > 0) {
 
     const deadlineWarning = document.createElement('p');
     deadlineWarning.textContent = `No bids will be placed after bid end.`;
-    deadlineWarning.classList.add('bid-Warning');
+    deadlineWarning.classList.add('bid-warning');
     deadlineRow.appendChild(deadlineWarning);
 
 //Place bids
@@ -204,28 +216,63 @@ if (auction.media && auction.media.length > 0) {
   const previousBidsDiv = document.createElement('div');
   previousBidsDiv.classList.add('previous-bids', 'pt-3');
   bidsDiv.appendChild(previousBidsDiv);
+
+
+
+
+
+
+
+
+  
+  
       
-  const previousBidsP = document.createElement('p');
+  const previousBidsP = document.createElement('button');
   previousBidsP.textContent = 'Previous bids';
+  previousBidsP.classList.add('btn', 'place-bid-btn', 'mt-4', 'mb-5')
   previousBidsDiv.appendChild(previousBidsP);
-      
+
+  let isCommentBidContainerVisible = false;
+
   const commentBidContainer = document.createElement('div');
   commentBidContainer.classList.add('comment-bid-container', 'd-flex', 'flex-column', 'ms-4');
   previousBidsDiv.appendChild(commentBidContainer);
-      
-      
-  if (auction._count && auction._count.bids > 0 && auction.bids && auction.bids.length > 0) {
-    auction.bids.forEach((bid) => {
-      const bidderBid = document.createElement('div');
-      bidderBid.textContent = `${bid.bidderName}: ${bid.amount}`;
-      bidderBid.classList.add('active-bid', 'me-2');
-      commentBidContainer.appendChild(bidderBid);
-    });
-    } else {
-    const noBidsMessage = document.createElement('div');
-    noBidsMessage.textContent = 'No previous bids';
-    commentBidContainer.appendChild(noBidsMessage);
+
+  previousBidsP.addEventListener('click', function() {
+    isCommentBidContainerVisible = !isCommentBidContainerVisible;
+
+    commentBidContainer.innerHTML = '';
+
+    if (isCommentBidContainerVisible) {
+      if (auction._count && auction._count.bids > 0 && auction.bids && auction.bids.length > 0) {
+        auction.bids.forEach((bid) => {
+          const bidderBid = document.createElement('div');
+          bidderBid.textContent = `${bid.bidderName}: ${bid.amount}`;
+          bidderBid.classList.add('active-bid', 'me-2');
+          commentBidContainer.appendChild(bidderBid);
+        });
+      } else {
+        const noBidsMessage = document.createElement('div');
+        noBidsMessage.textContent = 'No previous bids';
+        commentBidContainer.appendChild(noBidsMessage);
+        }
+
+        commentBidContainer.style.display = 'block';
+
+    }else{
+      commentBidContainer.style.display = 'none';
     }
+  });
+
+  commentBidContainer.style.display = 'none';
+      
+
+
+
+
+      
+
+
 
 
     auctionContainer.appendChild(auctionDiv);

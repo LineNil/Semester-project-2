@@ -73,7 +73,7 @@ async function fetchWithToken(url) {
         bidsContainer.appendChild(deadlineRow);
 
         const deadlineDiv = document.createElement('div');
-        deadlineDiv.classList.add('col-md-12', 'd-flex', 'justift-content-center');
+        deadlineDiv.classList.add('col-md-12', 'd-flex', 'flex-column', 'justift-content-center');
         deadlineRow.appendChild(deadlineDiv);
 
         const deadline = document.createElement('p');
