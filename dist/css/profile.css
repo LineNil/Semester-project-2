@@ -9715,7 +9715,7 @@ textarea.form-control-lg {
   }
 }
 body {
-  background-color: #E4E2E1;
+  background-color: #ffffff;
 }
 
 .logo {
@@ -9800,6 +9800,15 @@ body {
   border: 1px rgba(0, 0, 0, 0.477) solid;
 }
 
+.view-img-btn:hover,
+.view-img-btn:active {
+  color: rgba(0, 0, 0, 0.321);
+}
+
+.img-Button {
+  font-size: 12px;
+}
+
 .custom-search-input {
   width: 150px;
 }
@@ -9825,12 +9834,33 @@ body {
   margin-left: 4%;
 }
 
-.left-col {
-  border-right: 2px solid rgba(0, 0, 0, 0.22);
-}
-
 .right-col {
   justify-content: center;
+  box-shadow: 8px 4px 17px 10px rgba(0, 0, 0, 0.1);
+  margin-left: 5rem;
+}
+
+.modal-image {
+  width: 30%;
+  margin: auto;
+}
+
+.modal {
+  background-color: rgba(0, 0, 0, 0.692);
+}
+
+.listing-heading {
+  font-size: 30px;
+}
+
+.listing-description {
+  text-align: left;
+  margin: 0px;
+}
+
+.listing-description-p {
+  color: rgb(136, 136, 136);
+  font-family: "Roboto", sans-serif;
 }
 
 .bg-listing {
@@ -9840,6 +9870,13 @@ body {
 .listing-img {
   width: 100%;
   height: auto;
+}
+
+.active-bid {
+  justify-content: left;
+  display: flex;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.22);
+  padding: 12px 0px 0px 0px;
 }
 
 .bid-card {
@@ -9852,12 +9889,13 @@ body {
 
 .deadline {
   font-size: 18px;
+  display: flex;
 }
 
 .bid-warning {
-  color: rgb(171, 171, 171);
+  color: rgb(136, 136, 136);
   font-family: "Roboto", sans-serif;
-  font-size: 13px;
+  font-size: 11px;
 }
 
 .fa-circle-question {
@@ -9865,7 +9903,7 @@ body {
 }
 
 .previous-bids {
-  border-top: 2px solid rgba(0, 0, 0, 0.22);
+  border-top: 2px solid rgba(0, 0, 0, 0.06);
   font-size: 20px;
 }
 
@@ -9907,12 +9945,16 @@ body {
   }
   .right-col-mq {
     margin: 0px;
+    padding: 0px;
   }
   .listings-top-h {
     padding-top: 20px;
   }
   .searchInput {
     width: 50%;
+  }
+  .right-col {
+    margin-left: 0px;
   }
 }
 

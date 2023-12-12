@@ -125,3 +125,17 @@ listingForm.addEventListener('submit', async function (event) {
     document.getElementById('listingMedia').value = '';
   }
 });
+
+//del url when pressing x
+
+document.addEventListener('DOMContentLoaded', function () {
+  // Finn elementene
+  const listingMediaInput = document.getElementById('listingMedia');
+  const deleteImageIcon = document.getElementById('deleteImage');
+
+  // Legg til en klikk hendelse på slettikonet
+  deleteImageIcon.addEventListener('click', function () {
+    // Tøm input-verdien
+    listingMediaInput.value = '';
+  });
+});

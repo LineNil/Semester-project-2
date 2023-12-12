@@ -43,54 +43,85 @@ export async function fetchWithToken(url) {
 
     const auctionContainer = document.getElementById('auctionContainer');
 
+
     json.forEach((auction) => {
       if (auction.title && auction.media && auction.media.length) {
 
 
-
-
-
 ///row 2 auctions
     const auctionDiv = document.createElement('div');
-    auctionDiv.classList.add('row', 'pt3', 'right-col', 'mt-5');
+    auctionDiv.classList.add('row', 'pt3', 'right-col', 'mt-5', 'pt-4');
+
 
     const listingsDiv = document.createElement('div');
     listingsDiv.classList.add('col-md-6', 'bg-listing', 'p-3', 'ps-5', 'pe-5', 'g-0');
     auctionDiv.appendChild(listingsDiv);
-      
+
 
     if (auction.media && auction.media.length > 0) {
-      // Vis det første bildet som det store bildet
+  
       const mainAuctionImg = document.createElement('img');
       mainAuctionImg.src = auction.media[0];
       mainAuctionImg.classList.add('listing-img', 'profile-img');
       listingsDiv.appendChild(mainAuctionImg);
 
-      if (auction.media.length > 1) {
-        const smallImagesContainer = document.createElement('div');
-        smallImagesContainer.classList.add('small-images-container', 'd-flex', 'mt-3');
 
-            // Legg til små bilder i containeren
-    auction.media.slice(1).forEach((mediaUrl) => {
-      const smallAuctionImg = document.createElement('img');
-      smallAuctionImg.src = mediaUrl;
-      smallAuctionImg.classList.add('small-listing-img', 'profile-img', 'm-2');
-      smallImagesContainer.appendChild(smallAuctionImg);
+      const imgButton = document.createElement('button');
+      imgButton .type = 'button';
+      imgButton.classList.add('btn', 'view-img-btn', 'img-Button')
+      imgButton.textContent = 'View more images';
+      listingsDiv.appendChild(imgButton);
+
+    
+      const modal = document.createElement('div');
+      modal.classList.add('modal');
+      document.body.appendChild(modal);
+
+  
+      const openModal = () => {
+      modal.innerHTML = '';
+    
+      
+if (auction.media.length > 1) {
+  auction.media.slice(1).forEach((mediaUrl) => {
+    const img = document.createElement('img');
+    img.src = mediaUrl;
+    img.classList.add('modal-image');
+    modal.appendChild(img);
   });
-  listingsDiv.appendChild(smallImagesContainer);
+}else{
+  alert('No more images available.');
 }
-    }
-    const auctionTitle = document.createElement('h4');
-    auctionTitle.textContent = `Title: ${auction.title}`;
-    auctionTitle.classList.add('listing-heading', 'pt-2');
-    listingsDiv.appendChild(auctionTitle);
+
+modal.style.display = 'flex';
+  };
+
+imgButton.addEventListener('click', openModal);
+
+
+window.addEventListener('click', (event) => {
+  if (event.target === modal) {
+    modal.style.display = 'none';
+  }
+});
+
+}
+
+const auctionTitle = document.createElement('h4');
+auctionTitle.textContent = `${auction.title}`;
+auctionTitle.classList.add('listing-heading', 'pt-2', 'mb-4');
+listingsDiv.appendChild(auctionTitle);
+
+    const auctionDescriptionTitle = document.createElement('p');
+    auctionDescriptionTitle.textContent = `Item description:`;
+    auctionDescriptionTitle.classList.add('listing-description', 'mt-3', 'listing-description-p');
+    listingsDiv.appendChild(auctionDescriptionTitle);
 
     const auctionDescription = document.createElement('p');
-    auctionDescription.textContent = `Description: ${auction.description}`;
-    auctionDescription.classList.add('listing-description', 'mt-3');
+    auctionDescription.textContent = `${auction.description}`;
+    auctionDescription.classList.add('listing-description');
     listingsDiv.appendChild(auctionDescription);
      
-
 
   //row 3 bids
 
@@ -110,21 +141,9 @@ export async function fetchWithToken(url) {
     deadlineDiv.classList.add('col-md-12', 'flex-column', 'd-flex', 'justift-content-center');
     deadlineRow.appendChild(deadlineDiv);
 
-    const deadline = document.createElement('p');
-    deadline.textContent = `Closes in:`;
-    deadline.classList.add('deadline', 'pe-1', 'm-0');
-    deadline.id = 'deadline';
-    deadlineDiv.appendChild(deadline);
 
-    const deadlineCount = document.createElement('p');
-    deadlineCount.textContent = `${auction.endsAt}`;
-    deadlineCount.classList.add('deadline', 'm-0');
-    deadlineDiv.appendChild(deadlineCount);
 
-    const deadlineWarning = document.createElement('p');
-    deadlineWarning.textContent = `No bids will be placed after bid end.`;
-    deadlineWarning.classList.add('bid-warning');
-    deadlineRow.appendChild(deadlineWarning);
+
 
 //Place bids
 
@@ -213,20 +232,22 @@ export async function fetchWithToken(url) {
   bidWarningText.classList.add('bid-warning', 'ms-2');
   bidWarningDiv.appendChild(bidWarningText);   
 
+  
+  const deadlineCount = document.createElement('p');
+  deadlineCount.textContent = `Closes: ${auction.endsAt}`;
+  deadlineCount.classList.add('deadline', 'mb-0', 'mt-5');
+  bidForm.appendChild(deadlineCount);
+
+  const deadlineWarning = document.createElement('p');
+  deadlineWarning.textContent = `No bids will be placed after bid end.`;
+  deadlineWarning.classList.add('bid-warning', 'd-flex');
+  bidForm.appendChild(deadlineWarning);
+
   const previousBidsDiv = document.createElement('div');
-  previousBidsDiv.classList.add('previous-bids', 'pt-3');
+  previousBidsDiv.classList.add('previous-bids', 'pt-3', 'pb-5');
   bidsDiv.appendChild(previousBidsDiv);
 
 
-
-
-
-
-
-
-  
-  
-      
   const previousBidsP = document.createElement('button');
   previousBidsP.textContent = 'Previous bids';
   previousBidsP.classList.add('btn', 'place-bid-btn', 'mt-4', 'mb-5')
@@ -248,7 +269,7 @@ export async function fetchWithToken(url) {
         auction.bids.forEach((bid) => {
           const bidderBid = document.createElement('div');
           bidderBid.textContent = `${bid.bidderName}: ${bid.amount}`;
-          bidderBid.classList.add('active-bid', 'me-2');
+          bidderBid.classList.add('active-bid', 'mb-2');
           commentBidContainer.appendChild(bidderBid);
         });
       } else {
@@ -265,15 +286,6 @@ export async function fetchWithToken(url) {
   });
 
   commentBidContainer.style.display = 'none';
-      
-
-
-
-
-      
-
-
-
 
     auctionContainer.appendChild(auctionDiv);
     auctionDiv.appendChild(bidsDiv);
