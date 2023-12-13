@@ -9829,15 +9829,25 @@ body {
 
 .searchInput {
   width: 40%;
-  /*right: 0px;
-  position: absolute;*/
-  margin-left: 4%;
+  margin-left: 5rem;
 }
 
 .right-col {
   justify-content: center;
   box-shadow: 8px 4px 17px 10px rgba(0, 0, 0, 0.1);
   margin-left: 5rem;
+}
+
+.scroll-arrow {
+  color: black;
+}
+
+.scroll-button {
+  cursor: pointer;
+  float: right;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
 }
 
 .modal-image {
@@ -9861,6 +9871,7 @@ body {
 .listing-description-p {
   color: rgb(136, 136, 136);
   font-family: "Roboto", sans-serif;
+  font-size: 12px;
 }
 
 .bg-listing {

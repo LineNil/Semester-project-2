@@ -127,9 +127,7 @@ background-color: #dad6d4 ;
 
 .searchInput{
   width: 40%;
-  /*right: 0px;
-  position: absolute;*/
-  margin-left: 4%;
+  margin-left: 5rem;
 }
 
 
@@ -141,7 +139,18 @@ background-color: #dad6d4 ;
   margin-left: 5rem;
 }
 
+.left-col{}
 
+.scroll-arrow{
+  color: black;
+}
+.scroll-button {
+  cursor: pointer;
+  float: right;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
 
 
 //Listings and bids
@@ -172,6 +181,7 @@ background-color: #dad6d4 ;
 .listing-description-p{
   color: rgb(136, 136, 136);
   font-family: 'Roboto', sans-serif;
+  font-size: 12px;
 }
 
 .bg-listing{

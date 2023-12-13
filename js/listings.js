@@ -49,8 +49,13 @@ export async function fetchWithToken(url) {
 
 
 ///row 2 auctions
+
+
+
     const auctionDiv = document.createElement('div');
     auctionDiv.classList.add('row', 'pt3', 'right-col', 'mt-5', 'pt-4');
+
+
 
 
     const listingsDiv = document.createElement('div');
@@ -119,7 +124,7 @@ listingsDiv.appendChild(auctionTitle);
 
     const auctionDescription = document.createElement('p');
     auctionDescription.textContent = `${auction.description}`;
-    auctionDescription.classList.add('listing-description');
+    auctionDescription.classList.add('listing-description', 'pb-5');
     listingsDiv.appendChild(auctionDescription);
      
 
@@ -305,3 +310,5 @@ document.addEventListener('DOMContentLoaded', function () {
 
   fetchWithToken(ApiUrl  + listingsUrl);
 });
+
+
