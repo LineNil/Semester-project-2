@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
       console.log('Scroll button clicked.');
 
       console.log('Before scrollTo');
-      window.scrollTo({
+      window.scroll({
         top: 0,
         behavior: 'smooth'
       });

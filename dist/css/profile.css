@@ -9781,7 +9781,7 @@ body {
 
 .btn-logout:hover,
 .btn-logout:active {
-  background-color: #dad6d4;
+  color: #dad6d4;
 }
 
 .profile-btn:hover,
@@ -9795,8 +9795,7 @@ body {
 }
 
 .place-bid-btn,
-.profile-btn,
-.btn-logout {
+.profile-btn {
   border: 1px rgba(0, 0, 0, 0.477) solid;
 }
 
@@ -9907,6 +9906,7 @@ body {
   color: rgb(136, 136, 136);
   font-family: "Roboto", sans-serif;
   font-size: 11px;
+  justify-content: center;
 }
 
 .fa-circle-question {
