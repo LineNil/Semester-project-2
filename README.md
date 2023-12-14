@@ -46,16 +46,16 @@ The company CTO has set the following technical restrictions:
 
 ## Required Links
 •	Trello board for project and project timing
-https://trello.com/b/XuJ6NNL6/semester-projest-2
+https://trello.com/b/lbPUuNL1/semester-project-2
 
 •	Design prototype and Style guide
-
+https://www.figma.com/file/rwJGWjwi8tQ5vZiZvxXT3I/Untitled?type=design&node-id=0%3A1&mode=design&t=j5DXLZwOgisgINsn-1
 
 •	Repository link
 https://github.com/LineNil/Semester-project-2
 
 •	Hosted application demo link
-https://magical-wisp-a62485.netlify.app/
+https://semesterproject2023.netlify.app/
 
 
 ## Technologies Used
@@ -80,5 +80,5 @@ https://magical-wisp-a62485.netlify.app/
    npm run watch
    
    or open live site: 
-   https://js2courseassignment.netlify.app/
+   https://semesterproject2023.netlify.app/
 
