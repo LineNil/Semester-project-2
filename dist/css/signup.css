@@ -9736,7 +9736,12 @@ textarea.form-control-lg {
 }
 
 .custom-input {
-  background-color: rgba(228, 228, 228, 0.7137254902);
+  background-color: rgba(228, 228, 228, 0.16);
+}
+
+.custom-input::placeholder {
+  color: rgb(255, 255, 255);
+  border: solid 1px rgba(255, 255, 255, 0.3882352941);
 }
 
 /*# sourceMappingURL=signup.css.map */

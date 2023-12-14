@@ -9791,7 +9791,7 @@ textarea.form-control-lg {
 }
 
 .custom-input {
-  background-color: rgba(228, 228, 228, 0.7137254902);
+  background-color: rgba(228, 228, 228, 0.16);
 }
 
 .btn-login {
@@ -9800,6 +9800,11 @@ textarea.form-control-lg {
 
 .btn-login:hover {
   background-color: rgba(228, 228, 228, 0.8588235294);
+}
+
+.custom-input::placeholder {
+  color: rgb(255, 255, 255);
+  border: solid 1px rgba(255, 255, 255, 0.3882352941);
 }
 
 /*# sourceMappingURL=login.css.map */

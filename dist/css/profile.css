@@ -9719,21 +9719,50 @@ body {
 }
 
 .logo {
-  width: 8%;
+  width: 11%;
   position: relative;
+}
+
+.scroll-arrow {
+  color: black;
+}
+
+.scroll-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  float: right;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
 }
 
 .body-container {
   margin-top: 58px;
 }
 
+.heading-font {
+  font-size: 20px;
+  font-family: "Inria Serif", serif;
+}
+
 .hide {
   display: none;
 }
 
+.content-font,
+.listing-heading {
+  font-family: "Inria Serif", serif;
+}
+
+.left-col-noaccount {
+  display: flex;
+  justify-content: center;
+}
+
 .profile-image-container {
   position: relative;
-  display: inline-block;
   overflow: hidden;
   border-radius: 50%;
   width: 150px;
@@ -9745,11 +9774,6 @@ body {
 .profile-img {
   width: 100%;
   height: 100%;
-}
-
-.content-font,
-.listing-heading {
-  font-family: "Inria Serif", serif;
 }
 
 .profile-name {
@@ -9766,50 +9790,13 @@ body {
   font-size: 15px;
 }
 
-.heading-font {
-  font-size: 20px;
-  font-family: "Inria Serif", serif;
+#avatarForm {
+  justify-content: space-evenly;
+  display: flex;
 }
 
-.delete-btn {
-  color: black;
-}
-
-.delete-btn:hover {
-  color: red;
-}
-
-.btn-logout:hover,
-.btn-logout:active {
-  color: #dad6d4;
-}
-
-.profile-btn:hover,
-.profile-btn:active {
-  background-color: #dad6d4;
-}
-
-.place-bid-btn:hover,
-.place-bid-btn:active {
-  background-color: rgba(228, 226, 225, 0.5725490196);
-}
-
-.place-bid-btn,
-.profile-btn {
-  border: 1px rgba(0, 0, 0, 0.477) solid;
-}
-
-.view-img-btn:hover,
-.view-img-btn:active {
-  color: rgba(0, 0, 0, 0.321);
-}
-
-.img-Button {
-  font-size: 12px;
-}
-
-.custom-search-input {
-  width: 150px;
+#avatarUrl {
+  padding-right: 35px;
 }
 
 .delete-icon {
@@ -9821,9 +9808,8 @@ body {
   color: red;
 }
 
-.listings-top-h {
-  font-family: "Inria Serif", serif;
-  font-size: 30px;
+.custom-search-input {
+  width: 150px;
 }
 
 .searchInput {
@@ -9831,22 +9817,16 @@ body {
   margin-left: 5rem;
 }
 
+.listings-top-h {
+  font-family: "Inria Serif", serif;
+  font-size: 30px;
+  margin-top: 35px;
+}
+
 .right-col {
   justify-content: center;
   box-shadow: 8px 4px 17px 10px rgba(0, 0, 0, 0.1);
   margin-left: 5rem;
-}
-
-.scroll-arrow {
-  color: black;
-}
-
-.scroll-button {
-  cursor: pointer;
-  float: right;
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
 }
 
 .modal-image {
@@ -9898,8 +9878,9 @@ body {
 }
 
 .deadline {
-  font-size: 18px;
+  font-size: 16px;
   display: flex;
+  justify-content: center;
 }
 
 .bid-warning {
@@ -9922,14 +9903,59 @@ body {
   border-bottom: 2px solid rgba(0, 0, 0, 0.22);
 }
 
+.auction-info {
+  display: flex;
+  text-align: left;
+  font-size: 12px;
+  margin-bottom: 13px;
+}
+
+.delete-btn {
+  color: black;
+}
+
+.delete-btn:hover {
+  color: red;
+}
+
+.btn-logout:hover,
+.btn-logout:active {
+  color: #dad6d4;
+}
+
+.profile-btn:hover,
+.profile-btn:active {
+  background-color: #dad6d4;
+}
+
+.place-bid-btn:hover,
+.place-bid-btn:active {
+  background-color: rgba(228, 226, 225, 0.5725490196);
+}
+
+.place-bid-btn,
+.profile-btn {
+  border: 1px rgba(0, 0, 0, 0.477) solid;
+}
+
+.view-img-btn:hover,
+.view-img-btn:active {
+  color: rgba(0, 0, 0, 0.321);
+}
+
+.img-Button {
+  font-size: 12px;
+}
+
 .login-to-bid-btn {
   border: 1px solid rgba(0, 0, 0, 0.759);
   margin-top: 60px;
   display: flex;
   justify-content: center;
+  position: fixed;
 }
 
-.login-to-bid-btn:hover {
+.login-to-bid-btn:hover .login-to-bid-btn:active {
   background-color: #dad6d4;
 }
 
@@ -9943,6 +9969,12 @@ body {
   }
   .left-col {
     border: none;
+  }
+  .auction-info {
+    margin: 20px 26px 0px 26px;
+  }
+  .new-item {
+    margin-bottom: 20px;
   }
   .heading-font,
   .content-font {
@@ -9966,6 +9998,9 @@ body {
   }
   .right-col {
     margin-left: 0px;
+  }
+  .login-to-bid-btn {
+    position: relative;
   }
 }
 

@@ -34,89 +34,72 @@
           class="logo mx-auto"
         />
       </a>
-
     </nav>
     <div class="ms-2 me-2 pb-5 body-container">
       <div class="row">
         <!-- Venstre kolonne -->
         <div class="left-col col-md-4 ps-5 pe-5">
           <div class="profile-image-container">
-            <img id="profileAvatar" src="" alt="">/>
-
+            <img id="profileAvatar" alt="profile avatar">
           </div>
-
-
-
-
-        
-        <div>
-          <h1 class="profile-name" id="profileName">Loading...</h1>
-          <p class="credits" id="profileCredits">Loading...</p>
-
-
-<form id="avatarForm">
-  <input type="url" id="avatarUrl" name="avatarUrl" placeholder="Update avatar (URL)">
-  <button id="updateAvatarBtn" type="submit" class="btn profile-btn content-font">Update</button>
-</form>
-
-          
-
-
-
-          
-          
-          <form class="new-item" id="listingForm">
-            <h2 class="heading-font mb-4 mt-5">New item:</h2>
-            <div class="form-group mb-3">
-              <label for="listingTitle" class="content-font">Title</label>
-              <input type="text" class="form-control" id="listingTitle" required />
-            </div>
-            <div class="form-group mb-3">
-              <label for="listingDeadline" class="content-font">Deadline</label>
-              <input
-                type="date"
-                class="form-control"
-                id="listingDeadline"
-                required
-              />
-            </div>
-            <div class="form-group mb-3">
-              <label for="listingContent" class="content-font">Description</label>
-              <textarea
-                class="form-control"
-                id="listingContent"
-                rows="7"
-                required
-              ></textarea>
-            </div>
-
-            <div class="form-group mb-3">
-              <label for="listingMedia" class="content-font">Media URL</label>
-              <div class="input-group">
+          <div>
+            <h1 class="profile-name" id="profileName">Loading...</h1>
+            <p class="credits" id="profileCredits">Loading...</p>
+            <form id="avatarForm">
+              <input type="url" id="avatarUrl" name="avatarUrl" placeholder="Update avatar (URL)">
+              <button id="updateAvatarBtn" type="submit" class="btn profile-btn content-font">Update</button>
+            </form>
+            <form class="new-item" id="listingForm">
+              <h2 class="heading-font mb-4 mt-5">New item:</h2>
+              <div class="form-group mb-3">
+                <label for="listingTitle" class="content-font">Title</label>
+                <input type="text" class="form-control" id="listingTitle" required />
+              </div>
+              <div class="form-group mb-3">
+                <label for="listingDeadline" class="content-font">Deadline</label>
                 <input
-                  type="text"
+                  type="date"
                   class="form-control"
-                  id="listingMedia"
-                  placeholder="Media URL's (separate with commas)."
+                  id="listingDeadline"
+                  required
                 />
-                <div class="mt-2">
-                  <span class="delete-icon" id="deleteImage">
-                    <i class="fas fa-times"></i>
-                  </span>
+              </div>
+              <div class="form-group mb-3">
+                <label for="listingContent" class="content-font">Description</label>
+                <textarea
+                  class="form-control"
+                  id="listingContent"
+                  rows="7"
+                  required
+                ></textarea>
+              </div>
+
+              <div class="form-group mb-3">
+                <label for="listingMedia" class="content-font">Media URL</label>
+                <div class="input-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="listingMedia"
+                    placeholder="Media URL's (separate with commas)."
+                  />
+                  <div class="mt-2">
+                    <span class="delete-icon" id="deleteImage">
+                      <i class="fas fa-times"></i>
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
-
-            <button type="submit" class="btn profile-btn content-font">
-              Post item
-            </button>
-          </form>
-          
-        </div>
-        <!--<div id="backToTopBtn" class="back-to-top">&#8593; Back to Top</div>-->
+              <button type="submit" class="btn profile-btn content-font">
+                Post item
+              </button>
+            </form>
+          </div>
         </div>
         <!-- Høyre kolonner -->
         <div class="text-center right-col-mq col-md-7">
+          <p class="auction-info">Auction Nest is a sophisticated platform dedicated to exciting auctions and a unique experience for both buyers and sellers. Explore a diverse selection of high-quality products, artworks, and collectibles carefully curated to cater to various interests.</p>
+          <p class="auction-info">Whether you are a passionate collector or an enthusiastic seller, Auction Nest invites you to experience the thrill of auctions on a website dedicated to sharing and appreciating unique items from around the world.</p>
           <h1 class="listings-top-h">Listings</h1>
           <div class="searchDiv" id="searchDiv">
             <label for="searchInput" class="form-label visually-hidden">Search</label>
@@ -127,17 +110,13 @@
               placeholder="Search"
             />
           </div>
-          
           <button id="scrollButton" class="scroll-button">
             <i class="fa-light fa-arrow-up fa scroll-arrow"></i>
           </button>
-          
           <div id="auctionContainer" class="auctionContainer"></div>
-          
         </div>
       </div>
     </div>
-
     <footer class="text-black text-center py-4 mt-5">
       <div class="container footer-row"></div>
       <div class="g-0 row align-items-end text-center">

@@ -43,49 +43,38 @@ export async function fetchWithToken(url) {
 
     const auctionContainer = document.getElementById('auctionContainer');
 
-
     json.forEach((auction) => {
       if (auction.title && auction.media && auction.media.length) {
 
-
 ///row 2 auctions
-
-
 
     const auctionDiv = document.createElement('div');
     auctionDiv.classList.add('row', 'pt3', 'right-col', 'mt-5', 'pt-4');
-
-
-
 
     const listingsDiv = document.createElement('div');
     listingsDiv.classList.add('col-md-6', 'bg-listing', 'p-3', 'ps-5', 'pe-5', 'g-0');
     auctionDiv.appendChild(listingsDiv);
 
-
     if (auction.media && auction.media.length > 0) {
   
-      const mainAuctionImg = document.createElement('img');
-      mainAuctionImg.src = auction.media[0];
-      mainAuctionImg.classList.add('listing-img', 'profile-img');
-      listingsDiv.appendChild(mainAuctionImg);
+    const mainAuctionImg = document.createElement('img');
+    mainAuctionImg.src = auction.media[0];
+    mainAuctionImg.classList.add('listing-img', 'profile-img');
+    listingsDiv.appendChild(mainAuctionImg);
 
 
-      const imgButton = document.createElement('button');
-      imgButton .type = 'button';
-      imgButton.classList.add('btn', 'view-img-btn', 'img-Button')
-      imgButton.textContent = 'View more images';
-      listingsDiv.appendChild(imgButton);
+    const imgButton = document.createElement('button');
+    imgButton .type = 'button';
+    imgButton.classList.add('btn', 'view-img-btn', 'img-Button')
+    imgButton.textContent = 'View more images';
+    listingsDiv.appendChild(imgButton);
 
-    
-      const modal = document.createElement('div');
-      modal.classList.add('modal');
-      document.body.appendChild(modal);
+    const modal = document.createElement('div');
+    modal.classList.add('modal');
+    document.body.appendChild(modal);
 
-  
-      const openModal = () => {
-      modal.innerHTML = '';
-    
+    const openModal = () => {
+    modal.innerHTML = '';
       
 if (auction.media.length > 1) {
   auction.media.slice(1).forEach((mediaUrl) => {
@@ -99,17 +88,15 @@ if (auction.media.length > 1) {
 }
 
 modal.style.display = 'flex';
-  };
+};
 
 imgButton.addEventListener('click', openModal);
-
 
 window.addEventListener('click', (event) => {
   if (event.target === modal) {
     modal.style.display = 'none';
   }
 });
-
 }
 
 const auctionTitle = document.createElement('h4');
@@ -117,80 +104,73 @@ auctionTitle.textContent = `${auction.title}`;
 auctionTitle.classList.add('listing-heading', 'pt-2', 'mb-4');
 listingsDiv.appendChild(auctionTitle);
 
-    const auctionDescriptionTitle = document.createElement('p');
-    auctionDescriptionTitle.textContent = `Item description:`;
-    auctionDescriptionTitle.classList.add('listing-description', 'mt-3', 'listing-description-p');
-    listingsDiv.appendChild(auctionDescriptionTitle);
+const auctionDescriptionTitle = document.createElement('p');
+auctionDescriptionTitle.textContent = `Item description:`;
+auctionDescriptionTitle.classList.add('listing-description', 'mt-3', 'listing-description-p');
+listingsDiv.appendChild(auctionDescriptionTitle);
 
-    const auctionDescription = document.createElement('p');
-    auctionDescription.textContent = `${auction.description}`;
-    auctionDescription.classList.add('listing-description', 'pb-5');
-    listingsDiv.appendChild(auctionDescription);
+const auctionDescription = document.createElement('p');
+auctionDescription.textContent = `${auction.description}`;
+auctionDescription.classList.add('listing-description', 'pb-5');
+listingsDiv.appendChild(auctionDescription);
      
+//row 3 bids
 
-  //row 3 bids
+const bidsDiv = document.createElement('div');
+bidsDiv.classList.add('col-md-5', 'bg-listing','font-bid', 'g-0');
 
+const bidsContainer = document.createElement('div');
+bidsContainer.classList.add('container', 'p-4');
+bidsDiv.appendChild(bidsContainer);
 
-    const bidsDiv = document.createElement('div');
-    bidsDiv.classList.add('col-md-5', 'bg-listing','font-bid', 'g-0');
+const deadlineRow = document.createElement('div');
+deadlineRow.classList.add('row');
+bidsContainer.appendChild(deadlineRow);
 
-    const bidsContainer = document.createElement('div');
-    bidsContainer.classList.add('container', 'p-4');
-    bidsDiv.appendChild(bidsContainer);
-
-    const deadlineRow = document.createElement('div');
-    deadlineRow.classList.add('row');
-    bidsContainer.appendChild(deadlineRow);
-
-    const deadlineDiv = document.createElement('div');
-    deadlineDiv.classList.add('col-md-12', 'flex-column', 'd-flex', 'justift-content-center');
-    deadlineRow.appendChild(deadlineDiv);
-
-
-
-
+const deadlineDiv = document.createElement('div');
+deadlineDiv.classList.add('col-md-12', 'flex-column', 'd-flex', 'justift-content-center');
+deadlineRow.appendChild(deadlineDiv);
 
 //Place bids
 
-    const placeBidContainer = document.createElement('div');
-    placeBidContainer.classList.add('container');
-    bidsDiv.appendChild(placeBidContainer);
+const placeBidContainer = document.createElement('div');
+placeBidContainer.classList.add('container');
+bidsDiv.appendChild(placeBidContainer);
 
-    const bidCard = document.createElement('div');
-    bidCard.classList.add('bid-card', 'p-3');
-    bidsDiv.appendChild(bidCard);
+const bidCard = document.createElement('div');
+bidCard.classList.add('bid-card', 'p-3');
+bidsDiv.appendChild(bidCard);
 
-    const bidForm = document.createElement('form');
-    bidCard.appendChild(bidForm);
+const bidForm = document.createElement('form');
+bidCard.appendChild(bidForm);
 
-    const formGroupDiv = document.createElement('div');
-    formGroupDiv.classList.add('form-group');
-    bidForm.appendChild(formGroupDiv);
+const formGroupDiv = document.createElement('div');
+formGroupDiv.classList.add('form-group');
+bidForm.appendChild(formGroupDiv);
 
-    const bidLabel = document.createElement('label');
-    bidLabel.textContent = 'Your Bid:';
-    bidLabel.setAttribute('for', 'bidAmount');
-    bidLabel.classList.add('mb-2');
-    formGroupDiv.appendChild(bidLabel);
+const bidLabel = document.createElement('label');
+bidLabel.textContent = 'Your Bid:';
+bidLabel.setAttribute('for', 'bidAmount');
+bidLabel.classList.add('mb-2');
+formGroupDiv.appendChild(bidLabel);
 
-    const bidInput = document.createElement('input');
-    bidInput.type = 'text';
-    bidInput.classList.add('form-control');
-    bidInput.id = 'bidAmount';
-    bidInput.placeholder = 'Enter your bid amount - NOK';
-    bidInput.required = true;
-    bidLabel.appendChild(bidInput);
+const bidInput = document.createElement('input');
+bidInput.type = 'text';
+bidInput.classList.add('form-control');
+bidInput.id = 'bidAmount';
+bidInput.placeholder = 'Bid amount - NOK';
+bidInput.required = true;
+bidLabel.appendChild(bidInput);
 
-    const placeBidButton = document.createElement('button');
-    placeBidButton.type = 'button';
-    placeBidButton.classList.add('btn', 'place-bid-btn', 'mt-4');
-    placeBidButton.textContent = 'Place bid';
-    bidForm.appendChild(placeBidButton);
+const placeBidButton = document.createElement('button');
+placeBidButton.type = 'button';
+placeBidButton.classList.add('btn', 'place-bid-btn', 'mt-4');
+placeBidButton.textContent = 'Place bid';
+bidForm.appendChild(placeBidButton);
 
-    placeBidButton.addEventListener('click', async function () {
-      try {
+placeBidButton.addEventListener('click', async function () {
+   try {
       const bidAmount = bidInput.value.trim();
-
       if (!bidAmount || isNaN(bidAmount) || bidAmount <= 0) {
         alert('Invalid bid amount');
       return;
@@ -224,9 +204,9 @@ listingsDiv.appendChild(auctionTitle);
   }
 });
 
-    const bidWarningDiv = document.createElement('div');
-    bidWarningDiv.classList.add('d-flex', 'mt-3');
-    bidForm.appendChild(bidWarningDiv);
+  const bidWarningDiv = document.createElement('div');
+  bidWarningDiv.classList.add('d-flex', 'mt-3');
+  bidForm.appendChild(bidWarningDiv);
 
   const questionIcon = document.createElement('i');
   questionIcon.classList.add('fa-regular', 'fa-circle-question');
@@ -251,7 +231,6 @@ listingsDiv.appendChild(auctionTitle);
   const previousBidsDiv = document.createElement('div');
   previousBidsDiv.classList.add('previous-bids', 'pt-3', 'pb-5');
   bidsDiv.appendChild(previousBidsDiv);
-
 
   const previousBidsP = document.createElement('button');
   previousBidsP.textContent = 'Previous bids';
@@ -310,5 +289,3 @@ document.addEventListener('DOMContentLoaded', function () {
 
   fetchWithToken(ApiUrl  + listingsUrl);
 });
-
-

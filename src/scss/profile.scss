@@ -6,25 +6,51 @@ body{
 }
 
 .logo{
-  width: 8%;
+  width: 11%;
   position: relative;
+}
+
+.scroll-arrow{
+  color: black;
+}
+.scroll-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  float: right;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
 }
 
 .body-container{
   margin-top: 58px;
 }
 
+.heading-font{
+  font-size: 20px;
+  font-family: 'Inria Serif', serif;  
+}
+
 .hide {
   display: none;
 }
 
+.content-font,
+.listing-heading{
+  font-family: 'Inria Serif', serif;
+}
 
+/////profile
 
-
+.left-col-noaccount{
+  display: flex;
+  justify-content: center;
+}
 
 .profile-image-container {
   position: relative;
-  display: inline-block;
   overflow: hidden;
   border-radius: 50%;
   width: 150px;
@@ -33,23 +59,10 @@ body{
   margin: 0 auto;
 }
 
-
-
 .profile-img {
   width: 100%;
   height: 100%;
 }
-
-
-
-
-.content-font,
-.listing-heading{
-  font-family: 'Inria Serif', serif;
-}
-
-
-
 
 .profile-name{
   display: flex;
@@ -65,51 +78,16 @@ body{
   font-size: 15px;
 }
 
-.heading-font{
-  font-size: 20px;
-  font-family: 'Inria Serif', serif;
-  
+#avatarForm{
+  justify-content: space-evenly;
+  display: flex;
 }
 
-.delete-btn{
-  color: black;
-}
-.delete-btn:hover{
-color: $danger;
+#avatarUrl {
+  padding-right: 35px;
 }
 
-
-.btn-logout:hover,
-.btn-logout:active{
-  color: #dad6d4 ;
-}
-.profile-btn:hover,
-.profile-btn:active{
-background-color: #dad6d4 ;
-}
-.place-bid-btn:hover,
-.place-bid-btn:active{
-  background-color: #e4e2e192 ;
-}
-
-.place-bid-btn,
-.profile-btn
-{
-  border: 1px rgba(0, 0, 0, 0.477) solid;
-}
-
-.view-img-btn:hover,
-.view-img-btn:active{
-  color: rgba(0, 0, 0, 0.321);
-}
-
-.img-Button{
-  font-size: 12px;
-}
-
-.custom-search-input{
-  width: 150px;
-}
+//////New listing
 
 .delete-icon{
   margin-left: 20px;
@@ -119,10 +97,10 @@ background-color: #dad6d4 ;
   color: red;
 }
 
+/////search
 
-.listings-top-h{
-  font-family: 'Inria Serif', serif;
-  font-size: 30px;
+.custom-search-input{
+  width: 150px;
 }
 
 .searchInput{
@@ -130,8 +108,13 @@ background-color: #dad6d4 ;
   margin-left: 5rem;
 }
 
+/////Listings
 
-
+.listings-top-h{
+  font-family: 'Inria Serif', serif;
+  font-size: 30px;
+  margin-top: 35px;
+}
 
 .right-col{
   justify-content: center;
@@ -139,38 +122,18 @@ background-color: #dad6d4 ;
   margin-left: 5rem;
 }
 
-
-.scroll-arrow{
-  color: black;
-}
-.scroll-button {
-  cursor: pointer;
-  float: right;
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-}
-
-
-//Listings and bids
-
-
 .modal-image{
   width: 30%;
   margin: auto;
 }
 
-
 .modal{
   background-color: rgba(0, 0, 0, 0.692);
 }
 
-
-
 .listing-heading{
   font-size: 30px;
 }
-
 
 .listing-description{
   text-align: left;
@@ -185,7 +148,6 @@ background-color: #dad6d4 ;
 
 .bg-listing{
   background-color: white;
-
 }
 
 .listing-img{
@@ -193,10 +155,7 @@ background-color: #dad6d4 ;
   height: auto;
 }
 
-
-
-
-//bid
+/////bid
 
 .active-bid{
   justify-content: left;
@@ -214,8 +173,9 @@ background-color: #dad6d4 ;
 }
 
 .deadline{
-  font-size: 18px;
+  font-size: 16px;
   display: flex;
+  justify-content: center;
 }
 
 .bid-warning{
@@ -224,6 +184,7 @@ background-color: #dad6d4 ;
   font-size: 11px;
   justify-content: center;
 }
+
 .fa-circle-question{
 color: #7e7e7e;
 }
@@ -237,22 +198,63 @@ color: #7e7e7e;
   border-bottom: 2px solid rgba(0, 0, 0, 0.22);
 }
 
+.auction-info{
+  display: flex;
+text-align: left;
+font-size: 12px;
+margin-bottom: 13px;
+}
 
+//Buttons
+
+.delete-btn{
+  color: black;
+}
+.delete-btn:hover{
+color: $danger;
+}
+
+.btn-logout:hover,
+.btn-logout:active{
+  color: #dad6d4 ;
+}
+
+.profile-btn:hover,
+.profile-btn:active{
+background-color: #dad6d4 ;
+}
+
+.place-bid-btn:hover,
+.place-bid-btn:active{
+  background-color: #e4e2e192 ;
+}
+
+.place-bid-btn,
+.profile-btn{
+  border: 1px rgba(0, 0, 0, 0.477) solid;
+}
+
+.view-img-btn:hover,
+.view-img-btn:active{
+  color: rgba(0, 0, 0, 0.321);
+}
+
+.img-Button{
+  font-size: 12px;
+}
 
 .login-to-bid-btn{
   border: 1px solid rgba(0, 0, 0, 0.759);
   margin-top: 60px;
   display: flex;
   justify-content: center;
+  position: fixed;
 }
-.login-to-bid-btn:hover{
+
+.login-to-bid-btn:hover
+.login-to-bid-btn:active{
   background-color: #dad6d4 ;
 }
-
-
-
-
-
 
 @media (max-width: 767px) {
 .logo{
@@ -266,6 +268,12 @@ color: #7e7e7e;
   border: none;
 }
 
+.auction-info{
+  margin: 20px 26px 0px 26px;}
+
+  .new-item{
+margin-bottom: 20px;
+  }
 .heading-font,
 .content-font{
   font-size: 15px;
@@ -290,6 +298,8 @@ color: #7e7e7e;
     margin-left: 0px;
 
   }
-
+.login-to-bid-btn{
+  position: relative;
+}
 
 }

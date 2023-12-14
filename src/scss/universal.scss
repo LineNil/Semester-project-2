@@ -2,18 +2,11 @@
 
 @import "variables";
 
-.back-to-top{
-  display: flex;
-  justify-content: center;
-}
-
 body, html {
   margin: 0;
   padding: 0;
-
   overflow-x: hidden;
 }
-
 
 .navbar{
   z-index: 1;
@@ -30,6 +23,7 @@ body, html {
   top: -35px;
   position: relative;
 }
+
 .no-account:hover{
   color:$hover-text ;
 }
@@ -37,12 +31,10 @@ body, html {
 .login-signup-text{
   color: $loginsignuptext;
 }
+
 .login-signup-text:hover{
   color: $hover-text;
 }
-
-
-
 
 //footer
 
